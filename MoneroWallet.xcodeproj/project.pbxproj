@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		416B673C1D377474001CB934 /* BlockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673B1D377474001CB934 /* BlockHeader.swift */; };
+		416B673E1D377A73001CB934 /* RPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673D1D377A73001CB934 /* RPCService.swift */; };
+		416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673F1D377BE2001CB934 /* RPCInfo.swift */; };
 		41D6C3941D376DEC00178107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3931D376DEC00178107 /* AppDelegate.swift */; };
 		41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3951D376DEC00178107 /* FirstViewController.swift */; };
 		41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3971D376DEC00178107 /* SecondViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		416B673B1D377474001CB934 /* BlockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockHeader.swift; sourceTree = "<group>"; };
+		416B673D1D377A73001CB934 /* RPCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPCService.swift; sourceTree = "<group>"; };
+		416B673F1D377BE2001CB934 /* RPCInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPCInfo.swift; sourceTree = "<group>"; };
 		41D6C3901D376DEC00178107 /* MoneroWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneroWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D6C3931D376DEC00178107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41D6C3951D376DEC00178107 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		416B673A1D37742C001CB934 /* RPC */ = {
+			isa = PBXGroup;
+			children = (
+				416B673B1D377474001CB934 /* BlockHeader.swift */,
+				416B673D1D377A73001CB934 /* RPCService.swift */,
+				416B673F1D377BE2001CB934 /* RPCInfo.swift */,
+			);
+			path = RPC;
+			sourceTree = "<group>";
+		};
 		41D6C3871D376DEC00178107 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +122,7 @@
 		41D6C3921D376DEC00178107 /* MoneroWallet */ = {
 			isa = PBXGroup;
 			children = (
+				416B673A1D37742C001CB934 /* RPC */,
 				41D6C3931D376DEC00178107 /* AppDelegate.swift */,
 				41D6C3951D376DEC00178107 /* FirstViewController.swift */,
 				41D6C3971D376DEC00178107 /* SecondViewController.swift */,
@@ -165,6 +182,7 @@
 				41D6C38E1D376DEC00178107 /* Resources */,
 				0851B77A689E74C0E1A4FD85 /* [CP] Embed Pods Frameworks */,
 				0FE866F032D46DA44A362DF2 /* [CP] Copy Pods Resources */,
+				416B67411D377C62001CB934 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -312,6 +330,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoneroWallet/Pods-MoneroWallet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		416B67411D377C62001CB934 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		6C0CA932D386EC1457AAC05C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,9 +366,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				416B673C1D377474001CB934 /* BlockHeader.swift in Sources */,
 				41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */,
+				416B673E1D377A73001CB934 /* RPCService.swift in Sources */,
 				41D6C3941D376DEC00178107 /* AppDelegate.swift in Sources */,
 				41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */,
+				416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

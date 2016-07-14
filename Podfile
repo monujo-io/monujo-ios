@@ -5,4 +5,6 @@ target 'MoneroWallet' do
   
   pod 'Moya'
   pod 'Moya/ReactiveCocoa'
+  pod "Moya-SwiftyJSONMapper"
+  pod "Moya-SwiftyJSONMapper/ReactiveCocoa"
 end

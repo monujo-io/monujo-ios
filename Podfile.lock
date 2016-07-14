@@ -2,6 +2,15 @@ PODS:
   - Alamofire (3.4.1)
   - Moya (6.5.0):
     - Moya/Core (= 6.5.0)
+  - Moya-SwiftyJSONMapper (1.0.4):
+    - Moya-SwiftyJSONMapper/Core (= 1.0.4)
+  - Moya-SwiftyJSONMapper/Core (1.0.4):
+    - Moya
+    - SwiftyJSON (~> 2.3.2)
+  - Moya-SwiftyJSONMapper/ReactiveCocoa (1.0.4):
+    - Moya-SwiftyJSONMapper/Core
+    - Moya/ReactiveCocoa
+    - ReactiveCocoa
   - Moya/Core (6.5.0):
     - Alamofire (~> 3.0)
     - Result (~> 2.0)
@@ -20,17 +29,22 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 2.0)
   - Result (2.1.1)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Moya
+  - Moya-SwiftyJSONMapper
+  - Moya-SwiftyJSONMapper/ReactiveCocoa
   - Moya/ReactiveCocoa
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Moya: f7a4044719381cc6299f9ad3e0ef05f426f0557b
+  Moya-SwiftyJSONMapper: 174dfe333c4c06bae5b941448c443ff92ca4fa0a
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 822c879f145943320cc80a9a8372378e3d699fe4
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 1f827d61d57d2fcce3bd9ddca8137ff792668e63
+PODFILE CHECKSUM: b8c99a9c912f655d37537a339d21588be4728335
 
 COCOAPODS: 1.0.1
