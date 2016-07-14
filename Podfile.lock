@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (3.4.1)
+  - Moya (6.5.0):
+    - Moya/Core (= 6.5.0)
+  - Moya/Core (6.5.0):
+    - Alamofire (~> 3.0)
+    - Result (~> 2.0)
+  - Moya/ReactiveCocoa (6.5.0):
+    - Moya/Core
+    - ReactiveCocoa (~> 4.1)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
+    - ReactiveCocoa/no-arc
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
+    - ReactiveCocoa/Core
+    - Result (~> 2.0)
+  - Result (2.1.1)
+
+DEPENDENCIES:
+  - Moya
+  - Moya/ReactiveCocoa
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  Moya: f7a4044719381cc6299f9ad3e0ef05f426f0557b
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  Result: 822c879f145943320cc80a9a8372378e3d699fe4
+
+PODFILE CHECKSUM: 1f827d61d57d2fcce3bd9ddca8137ff792668e63
+
+COCOAPODS: 1.0.1
