@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Moya
+//import Moya
 
 class FirstViewController: UIViewController {
 
@@ -15,11 +15,11 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let provider = ReactiveCocoaMoyaProvider<RPCService>()
-        provider.request(.Getinfo).start { result in
+//        let provider = ReactiveCocoaMoyaProvider<RPCService>()
+//        provider.request(.Getinfo).start { result in
             // do something with the result (read on for more details)
-            Swift.debugPrint("Yeah: ", result)
-        }
+//            Swift.debugPrint("Yeah: ", result)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

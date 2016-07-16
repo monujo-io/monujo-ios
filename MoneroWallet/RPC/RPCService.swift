@@ -6,6 +6,7 @@
 //  Copyright © 2016 Ugo Bataillard. All rights reserved.
 //
 
+/*
 import Foundation
 import Moya
 
@@ -74,3 +75,4 @@ let endpointClosure = { (target: RPCService) -> Endpoint<RPCService> in
 
 // Create this instance at app launch
 let provider = MoyaProvider(endpointClosure: endpointClosure)
+*/
