@@ -1,0 +1,27 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B4529A80-95EC-4C2D-9875-051540734BDE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E" : "MoneroWallet\/bitmonero\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MoneroWallet",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MoneroWallet.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/monero-project\/bitmonero.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:knshiro\/bitmonero.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E"
+    }
+  ]
+}
