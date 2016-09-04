@@ -1,27 +1,37 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3F0283CAC40D840660BF96579569EFB60A3C3259+++51A2660",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E" : 0
+    "3F0283CAC40D840660BF96579569EFB60A3C3259+++51A2660" : 0,
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++CFAE43B" : 0,
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++3838444" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B4529A80-95EC-4C2D-9875-051540734BDE",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E" : "MoneroWallet\/bitmonero\/"
+    "3F0283CAC40D840660BF96579569EFB60A3C3259+++51A2660" : "MoneroWallet\/",
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++CFAE43B" : "MoneroWallet\/bitmonero\/",
+    "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++3838444" : "MoneroWallet\/bitmonero\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MoneroWallet",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MoneroWallet.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:knshiro\/monujo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F0283CAC40D840660BF96579569EFB60A3C3259+++51A2660"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/monero-project\/bitmonero.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++3838444"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:knshiro\/bitmonero.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAFBAF11F63B4F47EAD0E5CE5466C0A6BD65B47E+++CFAE43B"
     }
   ]
 }
