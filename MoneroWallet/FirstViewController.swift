@@ -13,27 +13,24 @@ class FirstViewController: UIViewController {
 
     let daemonURL: String = "http://node.moneroworld.com:18081"
  
-    var wallet: Wallet {
-        return Wallet(daemonAddress: daemonURL)
-    }
+    let wallet: Wallet! = nil;// Wallet(daemonAddress: "http://node.moneroworld.com:18081")
 
     @IBOutlet weak var outputTV: UITextView?
     @IBOutlet weak var generateButton: UIButton?
 
-
-    @IBAction func generateClicked(sender: UIButton) {
+    @IBAction func generateClicked(_ sender: UIButton) {
         generate()
     }
 
-    @IBAction func openClicked(sender: UIButton) {
+    @IBAction func openClicked(_ sender: UIButton) {
         open()
     }
 
-    @IBAction func refreshClicked(sender: UIButton) {
+    @IBAction func refreshClicked(_ sender: UIButton) {
         refresh()
     }
 
-    @IBAction func balanceClicked(sender: UIButton) {
+    @IBAction func balanceClicked(_ sender: UIButton) {
         showBalance()
     }
 
@@ -42,8 +39,8 @@ class FirstViewController: UIViewController {
         let file = "file.txt" //this is the file. we will write to and read from it
 
         if let dir = NSSearchPathForDirectoriesInDomains(
-            NSSearchPathDirectory.DocumentDirectory,
-            NSSearchPathDomainMask.AllDomainsMask,
+            FileManager.SearchPathDirectory.documentDirectory,
+            FileManager.SearchPathDomainMask.allDomainsMask,
             true).first {
             return "\(dir)/\(file)"
         } else {
@@ -54,7 +51,7 @@ class FirstViewController: UIViewController {
     func open() {
         if let path = walletPath() {
             //writing
-            let res = wallet.openInFile(path, withPassword: "groscaca", andTestNet: false)
+            let res = "";//wallet.open(inFile: path, withPassword: "groscaca", andTestNet: false)
             outputText(res)
         } else {
             Swift.debugPrint("Could not find document directory")
@@ -65,7 +62,7 @@ class FirstViewController: UIViewController {
 
         if let path = walletPath() {
             //writing
-            let res = wallet.generateInFile(path, withPassword: "groscaca", andTestNet: false)
+            let res = "";//wallet.generate(inFile: path, withPassword: "groscaca", andTestNet: false)
             outputText(res)
         } else {
             Swift.debugPrint("Could not find document directory")
@@ -74,12 +71,12 @@ class FirstViewController: UIViewController {
     }
 
     func refresh() {
-        wallet.refreshWithStartHeight(0, andReset: false)
+        //wallet.refresh(withStartHeight: 0, andReset: false)
         showBalance()
     }
 
     func showBalance() {
-        let res = wallet.show_balance_unlocked()
+        let res = "";//wallet.show_balance_unlocked()
         outputText(res)
     }
 
@@ -101,7 +98,7 @@ class FirstViewController: UIViewController {
     }
 
     
-    func outputText(text: String) {
+    func outputText(_ text: String) {
         outputTV?.text = text
     }
 

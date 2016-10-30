@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DaemonValues {
+open class DaemonValues {
 
     var blockheight: Int = 0
     var diff: Int = 0

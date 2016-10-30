@@ -18,7 +18,7 @@ enum RPCService {
 extension RPCService: TargetType {
 
     var baseURL: NSURL { return NSURL(string: "http://localhost:18081")! }
-    
+
     var path: String {
         switch self {
         case .Getinfo:

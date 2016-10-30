@@ -48,6 +48,18 @@
 		416B673E1D377A73001CB934 /* RPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673D1D377A73001CB934 /* RPCService.swift */; };
 		416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673F1D377BE2001CB934 /* RPCInfo.swift */; };
 		41B0220C1D43329600B5B801 /* Wallet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41B0220B1D43329600B5B801 /* Wallet.mm */; };
+		41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */; };
+		41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE11DC56661007AAE50 /* transaction_history.cpp */; };
+		41CE5CEC1DC56661007AAE50 /* transaction_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE31DC56661007AAE50 /* transaction_info.cpp */; };
+		41CE5CED1DC56661007AAE50 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE51DC56661007AAE50 /* utils.cpp */; };
+		41CE5CEE1DC56661007AAE50 /* wallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE61DC56661007AAE50 /* wallet.cpp */; };
+		41CE5CEF1DC56661007AAE50 /* wallet_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE81DC56661007AAE50 /* wallet_manager.cpp */; };
+		41CE5D041DC567E0007AAE50 /* base58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF01DC567E0007AAE50 /* base58.cpp */; };
+		41CE5D051DC567E0007AAE50 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 41CE5CF31DC567E0007AAE50 /* CMakeLists.txt */; };
+		41CE5D061DC567E0007AAE50 /* command_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF41DC567E0007AAE50 /* command_line.cpp */; };
+		41CE5D071DC567E0007AAE50 /* i18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF71DC567E0007AAE50 /* i18n.cpp */; };
+		41CE5D081DC567E0007AAE50 /* perf_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CFB1DC567E0007AAE50 /* perf_timer.cpp */; };
+		41CE5D091DC567E0007AAE50 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5D011DC567E0007AAE50 /* util.cpp */; };
 		41D6C3941D376DEC00178107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3931D376DEC00178107 /* AppDelegate.swift */; };
 		41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3951D376DEC00178107 /* FirstViewController.swift */; };
 		41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3971D376DEC00178107 /* SecondViewController.swift */; };
@@ -226,6 +238,39 @@
 		41B022041D4330A600B5B801 /* core_rpc_server_error_codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_error_codes.h; sourceTree = "<group>"; };
 		41B0220A1D43329600B5B801 /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
 		41B0220B1D43329600B5B801 /* Wallet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Wallet.mm; sourceTree = "<group>"; };
+		41CE5CD01DC5656F007AAE50 /* wallet2_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wallet2_api.h; sourceTree = "<group>"; };
+		41CE5CDE1DC56661007AAE50 /* common_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_defines.h; sourceTree = "<group>"; };
+		41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pending_transaction.cpp; sourceTree = "<group>"; };
+		41CE5CE01DC56661007AAE50 /* pending_transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pending_transaction.h; sourceTree = "<group>"; };
+		41CE5CE11DC56661007AAE50 /* transaction_history.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transaction_history.cpp; sourceTree = "<group>"; };
+		41CE5CE21DC56661007AAE50 /* transaction_history.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transaction_history.h; sourceTree = "<group>"; };
+		41CE5CE31DC56661007AAE50 /* transaction_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transaction_info.cpp; sourceTree = "<group>"; };
+		41CE5CE41DC56661007AAE50 /* transaction_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transaction_info.h; sourceTree = "<group>"; };
+		41CE5CE51DC56661007AAE50 /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		41CE5CE61DC56661007AAE50 /* wallet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wallet.cpp; sourceTree = "<group>"; };
+		41CE5CE71DC56661007AAE50 /* wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wallet.h; sourceTree = "<group>"; };
+		41CE5CE81DC56661007AAE50 /* wallet_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wallet_manager.cpp; sourceTree = "<group>"; };
+		41CE5CE91DC56661007AAE50 /* wallet_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wallet_manager.h; sourceTree = "<group>"; };
+		41CE5CF01DC567E0007AAE50 /* base58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base58.cpp; sourceTree = "<group>"; };
+		41CE5CF11DC567E0007AAE50 /* base58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base58.h; sourceTree = "<group>"; };
+		41CE5CF21DC567E0007AAE50 /* boost_serialization_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boost_serialization_helper.h; sourceTree = "<group>"; };
+		41CE5CF31DC567E0007AAE50 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		41CE5CF41DC567E0007AAE50 /* command_line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_line.cpp; sourceTree = "<group>"; };
+		41CE5CF51DC567E0007AAE50 /* command_line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = command_line.h; sourceTree = "<group>"; };
+		41CE5CF61DC567E0007AAE50 /* http_connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection.h; sourceTree = "<group>"; };
+		41CE5CF71DC567E0007AAE50 /* i18n.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = i18n.cpp; sourceTree = "<group>"; };
+		41CE5CF81DC567E0007AAE50 /* i18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i18n.h; sourceTree = "<group>"; };
+		41CE5CF91DC567E0007AAE50 /* int-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "int-util.h"; sourceTree = "<group>"; };
+		41CE5CFA1DC567E0007AAE50 /* json_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_util.h; sourceTree = "<group>"; };
+		41CE5CFB1DC567E0007AAE50 /* perf_timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = perf_timer.cpp; sourceTree = "<group>"; };
+		41CE5CFC1DC567E0007AAE50 /* perf_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perf_timer.h; sourceTree = "<group>"; };
+		41CE5CFD1DC567E0007AAE50 /* pod-class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pod-class.h"; sourceTree = "<group>"; };
+		41CE5CFE1DC567E0007AAE50 /* rpc_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpc_client.h; sourceTree = "<group>"; };
+		41CE5CFF1DC567E0007AAE50 /* scoped_message_writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scoped_message_writer.h; sourceTree = "<group>"; };
+		41CE5D001DC567E0007AAE50 /* unordered_containers_boost_serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unordered_containers_boost_serialization.h; sourceTree = "<group>"; };
+		41CE5D011DC567E0007AAE50 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		41CE5D021DC567E0007AAE50 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		41CE5D031DC567E0007AAE50 /* varint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = varint.h; sourceTree = "<group>"; };
 		41D6C3901D376DEC00178107 /* MoneroWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneroWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D6C3931D376DEC00178107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41D6C3951D376DEC00178107 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +317,8 @@
 		410EC63F1D7C71AE008720C5 /* wallet */ = {
 			isa = PBXGroup;
 			children = (
+				41CE5CDD1DC56660007AAE50 /* api */,
+				41CE5CD01DC5656F007AAE50 /* wallet2_api.h */,
 				410EC6401D7C71AE008720C5 /* wallet2.cpp */,
 				410EC6411D7C71AE008720C5 /* wallet2.h */,
 				410EC6421D7C71AE008720C5 /* wallet_errors.h */,
@@ -321,6 +368,26 @@
 		412565541D3A1F2B0055700F /* common */ = {
 			isa = PBXGroup;
 			children = (
+				41CE5CF01DC567E0007AAE50 /* base58.cpp */,
+				41CE5CF11DC567E0007AAE50 /* base58.h */,
+				41CE5CF21DC567E0007AAE50 /* boost_serialization_helper.h */,
+				41CE5CF31DC567E0007AAE50 /* CMakeLists.txt */,
+				41CE5CF41DC567E0007AAE50 /* command_line.cpp */,
+				41CE5CF51DC567E0007AAE50 /* command_line.h */,
+				41CE5CF61DC567E0007AAE50 /* http_connection.h */,
+				41CE5CF71DC567E0007AAE50 /* i18n.cpp */,
+				41CE5CF81DC567E0007AAE50 /* i18n.h */,
+				41CE5CF91DC567E0007AAE50 /* int-util.h */,
+				41CE5CFA1DC567E0007AAE50 /* json_util.h */,
+				41CE5CFB1DC567E0007AAE50 /* perf_timer.cpp */,
+				41CE5CFC1DC567E0007AAE50 /* perf_timer.h */,
+				41CE5CFD1DC567E0007AAE50 /* pod-class.h */,
+				41CE5CFE1DC567E0007AAE50 /* rpc_client.h */,
+				41CE5CFF1DC567E0007AAE50 /* scoped_message_writer.h */,
+				41CE5D001DC567E0007AAE50 /* unordered_containers_boost_serialization.h */,
+				41CE5D011DC567E0007AAE50 /* util.cpp */,
+				41CE5D021DC567E0007AAE50 /* util.h */,
+				41CE5D031DC567E0007AAE50 /* varint.h */,
 				412565551D3A1F2B0055700F /* base58.cpp */,
 				412565561D3A1F2B0055700F /* base58.h */,
 				412565571D3A1F2B0055700F /* boost_serialization_helper.h */,
@@ -564,6 +631,25 @@
 			path = src/rpc;
 			sourceTree = "<group>";
 		};
+		41CE5CDD1DC56660007AAE50 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				41CE5CDE1DC56661007AAE50 /* common_defines.h */,
+				41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */,
+				41CE5CE01DC56661007AAE50 /* pending_transaction.h */,
+				41CE5CE11DC56661007AAE50 /* transaction_history.cpp */,
+				41CE5CE21DC56661007AAE50 /* transaction_history.h */,
+				41CE5CE31DC56661007AAE50 /* transaction_info.cpp */,
+				41CE5CE41DC56661007AAE50 /* transaction_info.h */,
+				41CE5CE51DC56661007AAE50 /* utils.cpp */,
+				41CE5CE61DC56661007AAE50 /* wallet.cpp */,
+				41CE5CE71DC56661007AAE50 /* wallet.h */,
+				41CE5CE81DC56661007AAE50 /* wallet_manager.cpp */,
+				41CE5CE91DC56661007AAE50 /* wallet_manager.h */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		41D6C3871D376DEC00178107 = {
 			isa = PBXGroup;
 			children = (
@@ -698,18 +784,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Ugo Bataillard";
 				TargetAttributes = {
 					41D6C38F1D376DEC00178107 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					41D6C3A51D376DEC00178107 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 41D6C38F1D376DEC00178107;
 					};
 					41D6C3B01D376DEC00178107 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 41D6C38F1D376DEC00178107;
 					};
 				};
@@ -743,6 +832,7 @@
 				4119F6011D39B56200743CF5 /* Boost in Resources */,
 				412565BE1D3A1F4C0055700F /* version.cmake in Resources */,
 				41D6C39D1D376DEC00178107 /* Assets.xcassets in Resources */,
+				41CE5D051DC567E0007AAE50 /* CMakeLists.txt in Resources */,
 				412565BF1D3A1F4C0055700F /* version.h.in in Resources */,
 				41D6C39B1D376DEC00178107 /* Main.storyboard in Resources */,
 			);
@@ -803,14 +893,19 @@
 				412565B21D3A1F2B0055700F /* hash.c in Sources */,
 				412568D51D3A34100055700F /* oaes_lib.c in Sources */,
 				412568DE1D3A55920055700F /* hash-extra-groestl.c in Sources */,
+				41CE5D041DC567E0007AAE50 /* base58.cpp in Sources */,
 				410EC6511D7C759E008720C5 /* rctSigs.cpp in Sources */,
+				41CE5D081DC567E0007AAE50 /* perf_timer.cpp in Sources */,
+				41CE5CEF1DC56661007AAE50 /* wallet_manager.cpp in Sources */,
 				412565AC1D3A1F2B0055700F /* i18n.cpp in Sources */,
 				412568E41D3A55F40055700F /* blake256.c in Sources */,
+				41CE5CED1DC56661007AAE50 /* utils.cpp in Sources */,
 				416B673C1D377474001CB934 /* BlockHeader.swift in Sources */,
 				41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */,
 				410EC6521D7C759E008720C5 /* rctTypes.cpp in Sources */,
 				412568DC1D3A55920055700F /* hash-extra-blake.c in Sources */,
 				412568E71D3A56110055700F /* jh.c in Sources */,
+				41CE5CEE1DC56661007AAE50 /* wallet.cpp in Sources */,
 				412565B11D3A1F2B0055700F /* crypto.cpp in Sources */,
 				416B673E1D377A73001CB934 /* RPCService.swift in Sources */,
 				412568EF1D3A56A90055700F /* hash-extra-skein.c in Sources */,
@@ -819,7 +914,10 @@
 				412565B61D3A1F2B0055700F /* cryptonote_basic_impl.cpp in Sources */,
 				410EC6431D7C71AE008720C5 /* wallet2.cpp in Sources */,
 				412565B41D3A1F2B0055700F /* random.c in Sources */,
+				41CE5D071DC567E0007AAE50 /* i18n.cpp in Sources */,
+				41CE5D061DC567E0007AAE50 /* command_line.cpp in Sources */,
 				412565B01D3A1F2B0055700F /* crypto-ops.c in Sources */,
+				41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */,
 				412568CF1D3A33610055700F /* slow-hash.c in Sources */,
 				412568DB1D3A55920055700F /* aesb.c in Sources */,
 				412565A81D3A1F2B0055700F /* base58.cpp in Sources */,
@@ -827,12 +925,14 @@
 				412565AE1D3A1F2B0055700F /* util.cpp in Sources */,
 				412565B71D3A1F2B0055700F /* cryptonote_format_utils.cpp in Sources */,
 				412565B81D3A1F2B0055700F /* difficulty.cpp in Sources */,
+				41CE5D091DC567E0007AAE50 /* util.cpp in Sources */,
 				410EC64F1D7C759E008720C5 /* rctCryptoOps.c in Sources */,
 				41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */,
 				410EC6501D7C759E008720C5 /* rctOps.cpp in Sources */,
 				412565BA1D3A1F2B0055700F /* electrum-words.cpp in Sources */,
 				412568EE1D3A56A90055700F /* skein.c in Sources */,
 				412565B31D3A1F2B0055700F /* keccak.c in Sources */,
+				41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */,
 				412568ED1D3A56A90055700F /* tree-hash.c in Sources */,
 				412568E11D3A55D20055700F /* groestl.c in Sources */,
 				412568DD1D3A55920055700F /* hash-extra-jh.c in Sources */,
@@ -840,6 +940,7 @@
 				412568CD1D3A2BA10055700F /* miner.cpp in Sources */,
 				412565B51D3A1F2B0055700F /* account.cpp in Sources */,
 				412565AF1D3A1F2B0055700F /* chacha8.c in Sources */,
+				41CE5CEC1DC56661007AAE50 /* transaction_info.cpp in Sources */,
 				412565AA1D3A1F2B0055700F /* command_line.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,8 +1010,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -955,8 +1058,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -975,6 +1080,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1027,6 +1133,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1076,6 +1183,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1087,6 +1195,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneroWallet.app/MoneroWallet";
 			};
 			name = Debug;
@@ -1099,6 +1208,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneroWallet.app/MoneroWallet";
 			};
 			name = Release;
@@ -1110,6 +1220,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = MoneroWallet;
 			};
 			name = Debug;
@@ -1121,6 +1232,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = MoneroWallet;
 			};
 			name = Release;

@@ -57,6 +57,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>node.moneroworld.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<false/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>localhost</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>

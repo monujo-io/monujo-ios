@@ -7,297 +7,214 @@
 //
 
 #import "Wallet.h"
-#import "wallet2.h"
-#import <mnemonics/electrum-words.h>
-#import <rpc/core_rpc_server_commands_defs.h>
-
-using namespace cryptonote;
-using namespace epee;
-
+#import "wallet/wallet2_api.h"
 
 @interface Wallet() {
-    NSString* _daemonAddress;
-
-    @private
-    std::unique_ptr<tools::wallet2> m_wallet;
-    std::string m_daemon_address;
-    net_utils::http::http_simple_client m_http_client;
-    std::atomic<bool> m_in_manual_refresh;
+    Bitmonero::Wallet * m_walletImpl;
+    UInt64 m_daemonBlockChainHeight;
+    UInt64 m_daemonBlockChainTargetHeight;
+    int    m_daemonBlockChainHeightTtl;
+    //TransactionHistory * m_history;
 }
 @end
 
+int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
+
 @implementation Wallet
 
-- (id)initWithDaemonAddress: (NSString*) daemonAddress {
+- (id)initWithWallet: (Bitmonero::Wallet*) w {
+    
     self = [super init];
     
     if (self) {
-        // initialize instance variables here
-        _daemonAddress = daemonAddress;
-        m_daemon_address = std::string([daemonAddress UTF8String]);
+        m_walletImpl = w;
+        //m_history = NULL;
+        //m_historyModel = NULL;
+        m_daemonBlockChainHeight = 0;
+        m_daemonBlockChainHeightTtl = DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
+        
+        //m_history = new TransactionHistory(m_walletImpl->history(), this);
+        //m_walletImpl->setListener(new WalletListenerImpl(this));
+        
     }
-    
     return self;
 }
 
-- (NSString*) openInFile:(NSString*) file
-            withPassword:(NSString*) _password
-              andTestNet:(bool) testnet
+- (void)dealloc {
+    Bitmonero::WalletManagerFactory::getWalletManager()->closeWallet(m_walletImpl);
+}
+
+- (bool) initWalletWithDaemonAddress: (NSString*) daemonAddress
+   andUpperTransactionLimit: (UInt64) upperTransactionLimit
+            andIsRecovering: (bool) isRecovering
+           andRestoreHeight: (UInt64) restoreHeight
 {
-    std::string m_wallet_file = std::string([file UTF8String]);
-    std::string password = std::string([_password UTF8String]);
-    
-    m_wallet.reset(new tools::wallet2(testnet));
-    
-    try
-    {
-        m_wallet->load(m_wallet_file, password);
-        
-        NSString* addr = [NSString stringWithUTF8String: m_wallet->get_account().get_public_address_str(m_wallet->testnet()).c_str()];
-        
-        NSLog(@"Opened %@ wallet at %@", m_wallet->watch_only() ? @"watch-only" : @"", addr);
-        // If the wallet file is deprecated, we should ask for mnemonic language again and store
-        // everything in the new format.
-        // NOTE: this is_deprecated() refers to the wallet file format before becoming JSON. It does not refer to the "old english" seed words form of "deprecated" used elsewhere.
-        if (m_wallet->is_deprecated())
-        {
-            if (m_wallet->is_deterministic())
-            {
-                NSLog(@"You had been using a deprecated version of the wallet. Please proceed to upgrade your wallet.");
-                
-                std::string mnemonic_language = get_mnemonic_language();
-                if (mnemonic_language.empty())
-                    return nil;
-                m_wallet->set_seed_language(mnemonic_language);
-                m_wallet->rewrite(m_wallet_file, password);
-                
-                // Display the seed
-                std::string seed;
-                m_wallet->get_seed(seed);
-                return [NSString stringWithUTF8String: seed.c_str()];
-            }
-            else
-            {
-                NSLog(@"You had been using a deprecated version of the wallet. Your wallet file format is being upgraded now.");
-                m_wallet->rewrite(m_wallet_file, password);
-                return nil;
-            }
-        }
-        return addr;
-    }
-    catch (const std::exception& e)
-    {
-        NSLog(@"ailed to load wallet: %s", e.what());
-
-        // only suggest removing cache if the password was actually correct
-        if (m_wallet->verify_password(password)) {
-           NSLog(@"You may want to remove the file \"%s\" and try again", m_wallet_file.c_str());
-        }
-        return nil;
-    }
+   return m_walletImpl->init(std::string([daemonAddress UTF8String]), upperTransactionLimit);
 }
 
--(NSString*) generateInFile:(NSString*) file
-          withPassword:(NSString*) _password
-            andTestNet:(bool) testnet
+
+- (void) initWalletAsyncWithDaemonAddress: (NSString*) daemonAddress
+           andUpperTransactionLimit: (UInt64) upperTransactionLimit
+                    andIsRecovering: (bool) isRecovering
+                   andRestoreHeight: (UInt64) restoreHeight
 {
-
-    crypto::secret_key recovery_key;
-
-    std::string mnemonic_language = get_mnemonic_language();
-    if (mnemonic_language.empty()) {
-            return nil;
+    if (isRecovering){
+        NSLog(@"RESTORING");
+        m_walletImpl->setRecoveringFromSeed(true);
+        m_walletImpl->setRefreshFromBlockHeight(restoreHeight);
     }
-    
-    std::string wallet_file = std::string([file UTF8String]);
-    std::string password = std::string([_password UTF8String]);
-
-    self->m_wallet.reset(new tools::wallet2(testnet));
-    //self->m_wallet->callback(this);
-    self->m_wallet->set_seed_language(mnemonic_language);
-    
-    crypto::secret_key recovery_val;
-    try
-    {
-        recovery_val = m_wallet->generate(wallet_file, password, recovery_key, false, false);
-        NSLog(@"Generated new wallet: %@", [NSString stringWithUTF8String:m_wallet->get_account().get_public_address_str(m_wallet->testnet()).c_str()]);
-        NSLog(@"View key: %@", [NSString stringWithUTF8String:epee::string_tools::pod_to_hex(m_wallet->get_account().get_keys().m_view_secret_key).c_str()]);
-    }
-    catch (const std::exception& e)
-    {
-        NSLog(@"failed to generate new wallet: %@", [NSString stringWithUTF8String: e.what()]);
-        return nil;
-    }
-    
-    //m_wallet->init(m_daemon_address);
-    
-    // convert rng value to electrum-style word list
-    std::string electrum_words;
-    
-    crypto::ElectrumWords::bytes_to_words(recovery_val, electrum_words, mnemonic_language);
-    
-    NSString* res = [@[@"**********************************************************************",
-      @"Your wallet has been generated!",
-      @"To start synchronizing with the daemon, use \"refresh\" command.",
-      @"Use \"help\" command to see the list of available commands.",
-      @"Always use \"exit\" command when closing simplewallet to save your",
-      @"current session's state. Otherwise, you might need to synchronize",
-      @"your wallet again (your wallet keys are NOT at risk in any case).",
-      [NSString stringWithUTF8String: electrum_words.c_str()],
-      @"**********************************************************************"
-       ] componentsJoinedByString: @"\n"];
-    NSLog(res);
-    return res;
-}
-
-
-- (bool) refreshWithStartHeight:(uint64_t) start_height
-                            andReset:(bool) reset
-{
-    if (![self try_connect_to_daemon: false])
-        return true;
-    
-    //LOCK_IDLE_SCOPE();
-    
-    if (reset)
-        m_wallet->rescan_blockchain(false);
-    
-    NSLog(@"Starting refresh...");
-    
-    uint64_t fetched_blocks = 0;
-    bool ok = false;
-    std::ostringstream ss;
-    try
-    {
-        m_in_manual_refresh.store(true, std::memory_order_relaxed);
-        epee::misc_utils::auto_scope_leave_caller scope_exit_handler = epee::misc_utils::create_scope_leave_handler([&](){m_in_manual_refresh.store(false, std::memory_order_relaxed);});
-        m_wallet->refresh(start_height, fetched_blocks);
-        ok = true;
-        // Clear line "Height xxx of xxx"
-         NSLog(@"Refresh done, blocks received: %llu", fetched_blocks);
-        [self show_balance_unlocked];
-    }
-    catch (const tools::error::daemon_busy&)
-    {
-        NSLog(@"daemon is busy. Please try again later.");
-    }
-    catch (const tools::error::no_connection_to_daemon&)
-    {
-         NSLog(@"no connection to daemon. Please make sure daemon is running.");
-    }
-    catch (const tools::error::wallet_rpc_error& e)
-    {
-        LOG_ERROR("RPC error: " << e.to_string());
-        NSLog(@"RPC error: %s", e.what());
-    }
-    catch (const tools::error::refresh_error& e)
-    {
-        LOG_ERROR("refresh error: " << e.to_string());
-        NSLog(@"refresh error: %s", e.what());
-    }
-    catch (const tools::error::wallet_internal_error& e)
-    {
-        LOG_ERROR("internal error: " << e.to_string());
-        NSLog(@"internal error: %s", e.what());
-    }
-    catch (const std::exception& e)
-    {
-        LOG_ERROR("unexpected error: " << e.what());
-        NSLog(@"unexpected error: %s", e.what());
-    }
-    catch (...)
-    {
-        LOG_ERROR("unknown error");
-        NSLog(@"unknown error");
-    }
-    
-    if (!ok)
-    {
-        NSLog(@"refresh failed: %s. Blocks received: %llu", ss.str().c_str(), fetched_blocks);
-    }
-    
-    return true;
+    m_walletImpl->initAsync(std::string([daemonAddress UTF8String]), upperTransactionLimit);
 }
 
 
 
-- (NSString*) show_balance_unlocked {
-    NSString* res = [NSString stringWithFormat:@"Balance: %llu, unlocked balance: %llu", m_wallet->balance(), m_wallet->unlocked_balance()];
-    NSLog(res);
-    return res;
+- (NSString*) getSeed {
+    return [NSString stringWithUTF8String:m_walletImpl->seed().c_str()];
+}
+
+- (NSString*) getSeedLanguage {
+    return [NSString stringWithUTF8String:m_walletImpl->getSeedLanguage().c_str()];
+}
+
+- (void) setSeedLanguage: (NSString*) lang {
+    m_walletImpl->setSeedLanguage(std::string([lang UTF8String]));
+}
+
+//- (Wallet::Status) status {
+//    return static_cast<Status>(m_walletImpl->status());
+//}
+
+- (bool) connected {
+    return m_walletImpl->connected();
+}
+
+- (bool) synchronized {
+    return m_walletImpl->synchronized();
+}
+
+- (NSString*) errorString {
+    return [NSString stringWithUTF8String:m_walletImpl->errorString().c_str()];
+}
+
+- (bool) setPassword: (NSString*) password {
+    return m_walletImpl->setPassword(std::string([password UTF8String]));
+}
+
+- (NSString*) address {
+    return [NSString stringWithUTF8String:m_walletImpl->address().c_str()];
+}
+
+- (bool) store: (NSString*) path {
+    return m_walletImpl->store(std::string([path UTF8String]));
 }
 
 
-- (uint64_t) get_daemon_blockchain_height {
-    COMMAND_RPC_GET_HEIGHT::request req;
-    COMMAND_RPC_GET_HEIGHT::response res = boost::value_initialized<COMMAND_RPC_GET_HEIGHT::response>();
-    bool r = net_utils::invoke_http_json_remote_command2(m_daemon_address + "/getheight", req, res, m_http_client);
-    std::string err = interpret_rpc_response(r, res.status);
-    return res.height;
+- (bool) connectToDaemon {
+    return m_walletImpl->connectToDaemon();
 }
 
-//----------------------------------------------------------------------------------------------------
-- (NSString*) show_blockchain_height {
-    if (![self try_connect_to_daemon: false])
-        return @"Could not connect to daemon";
-    
-    std::string err;
-    uint64_t bc_height = self.get_daemon_blockchain_height;
-    NSString* res;
-    if (err.empty()) {
-        res = [NSString stringWithFormat:@"bc_eight: %llu", bc_height];
-    } else {
-        res = [NSString stringWithFormat:@"failed to get blockchain height: %s", err.c_str()];
-    }
-    NSLog(res);
-    return res;
+- (void) setTrustedDaemon: (bool) arg {
+    m_walletImpl->setTrustedDaemon(arg);
 }
 
+- (UInt64) balance {
+    return m_walletImpl->balance();
+}
 
-- (bool) try_connect_to_daemon:(bool) silent {
-//    bool same_version = false;
-    if (!m_wallet->check_connection())
-    {
-        if (!silent)
-            NSLog(@"wallet failed to connect to daemon: %@ . Daemon either is not started or wrong port was passed. Please make sure daemon is running or restart the wallet with the correct daemon address.", _daemonAddress);
-        return false;
-    }
-//    if (!m_allow_mismatched_daemon_version && !same_version)
-//    {
-//        if (!silent)
-//            fail_msg_writer() << tr("Daemon uses a different RPC version that the wallet: ") << m_daemon_address << ". " <<
-//            tr("Either update one of them, or use --allow-mismatched-daemon-version.");
-//        return false;
+- (UInt64) unlockedBalance {
+    return m_walletImpl->unlockedBalance();
+}
+
+- (UInt64) blockChainHeight {
+    return m_walletImpl->blockChainHeight();
+}
+
+//- (UInt64) daemonBlockChainHeight {
+//    // cache daemon blockchain height for some time (60 seconds by default)
+//    
+//    if (m_daemonBlockChainHeight == 0
+//        || m_daemonBlockChainHeightTime.elapsed() / 1000 > m_daemonBlockChainHeightTtl) {
+//        m_daemonBlockChainHeight = m_walletImpl->daemonBlockChainHeight();
+//        m_daemonBlockChainHeightTime.restart();
 //    }
-    return true;
+//    return m_daemonBlockChainHeight;
+//}
+
+- (UInt64) daemonBlockChainTargetHeight {
+    m_daemonBlockChainTargetHeight = m_walletImpl->daemonBlockChainTargetHeight();
+    return m_daemonBlockChainTargetHeight;
 }
 
+//- (bool) refresh {
+//    bool result = m_walletImpl->refresh();
+//    m_history->refresh();
+////    if (result)
+////        updated();
+//    return result;
+//}
 
-std::string get_mnemonic_language() {
-    std::vector<std::string> language_list;
-    crypto::ElectrumWords::get_language_list(language_list);
-    return language_list.front();
+- (void) refreshAsync {
+    m_walletImpl->refreshAsync();
 }
 
-inline std::string interpret_rpc_response(bool ok, const std::string& status)
+- (void) setAutoRefreshInterval:(int) seconds {
+    m_walletImpl->setAutoRefreshInterval(seconds);
+}
+
+- (int) autoRefreshInterval
 {
-    std::string err;
-    if (ok)
-    {
-        if (status == CORE_RPC_STATUS_BUSY)
-        {
-            err = std::string("daemon is busy. Please try again later.");
-        }
-        else if (status != CORE_RPC_STATUS_OK)
-        {
-            err = status;
-        }
-    }
-    else
-    {
-        err = std::string("possibly lost connection to daemon");
-    }
-    return err;
+    return m_walletImpl->autoRefreshInterval();
 }
+
+//- (PendingTransaction*) createTransactionToAddress: (NSString*) dst_addr
+//                                     withPaymentId: (NSString*) payment_id
+//                                        andAmount: (UInt64) amount
+//                                    andMixinCount: (UInt32) mixin_count
+//                                       andPriority: (int) priority //PendingTransaction::Priority priority)
+//{
+//    Bitmonero::PendingTransaction * ptImpl = m_walletImpl->createTransaction(std::string([dst_addr UTF8String]),
+//                                                                             std::string([payment_id UTF8String]),
+//                                                                             amount,
+//                                                                             mixin_count,
+//                                                                             static_cast<Bitmonero::PendingTransaction::Priority>(priority));
+//    PendingTransaction * result = new PendingTransaction(ptImpl, this);
+//    return result;
+//}
+//
+//- (void) disposeTransaction: (PendingTransaction *) t {
+//    m_walletImpl->disposeTransaction(t->m_pimpl);
+//    delete t;
+//    [t destroy]
+//}
+//
+//- (TransactionHistory*) history {
+//    return m_history;
+//}
+//
+//- (TransactionHistorySortFilterModel*) historyModel
+//{
+//    if (!m_historyModel) {
+//        Wallet * w = const_cast<Wallet*>(this);
+//        m_historyModel = new TransactionHistoryModel(w);
+//        m_historyModel->setTransactionHistory(this->history());
+//        m_historySortFilterModel = new TransactionHistorySortFilterModel(w);
+//        m_historySortFilterModel->setSourceModel(m_historyModel);
+//    }
+//    
+//    return m_historySortFilterModel;
+//}
+
+
+- (NSString*) generatePaymentId
+{
+    return [NSString stringWithUTF8String:Bitmonero::Wallet::genPaymentId().c_str()];
+}
+
+- (NSString*) integratedAddressWithPaymentId: (NSString*) paymentId
+{
+    return [NSString stringWithUTF8String:m_walletImpl->integratedAddress(std::string([paymentId UTF8String])).c_str()];
+}
+
+
 
 @end
