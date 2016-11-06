@@ -54,6 +54,7 @@
 		418241861DCF41E500A666C2 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241851DCF41E500A666C2 /* CreateWalletViewController.swift */; };
 		418241881DCF43DB00A666C2 /* OpenWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */; };
 		4182418A1DCF444E00A666C2 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241891DCF444E00A666C2 /* WalletViewController.swift */; };
+		4182418C1DCF6A9100A666C2 /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */; };
 		41B0220C1D43329600B5B801 /* Wallet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41B0220B1D43329600B5B801 /* Wallet.mm */; };
 		41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */; };
 		41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE11DC56661007AAE50 /* transaction_history.cpp */; };
@@ -66,8 +67,6 @@
 		41CE5D061DC567E0007AAE50 /* command_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF41DC567E0007AAE50 /* command_line.cpp */; };
 		41CE5D081DC567E0007AAE50 /* perf_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CFB1DC567E0007AAE50 /* perf_timer.cpp */; };
 		41D6C3941D376DEC00178107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3931D376DEC00178107 /* AppDelegate.swift */; };
-		41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3951D376DEC00178107 /* FirstViewController.swift */; };
-		41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3971D376DEC00178107 /* SecondViewController.swift */; };
 		41D6C39B1D376DEC00178107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D6C3991D376DEC00178107 /* Main.storyboard */; };
 		41D6C39D1D376DEC00178107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D6C39C1D376DEC00178107 /* Assets.xcassets */; };
 		41D6C3A01D376DEC00178107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D6C39E1D376DEC00178107 /* LaunchScreen.storyboard */; };
@@ -251,6 +250,7 @@
 		418241851DCF41E500A666C2 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWalletViewController.swift; sourceTree = "<group>"; };
 		418241891DCF444E00A666C2 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "MoneroWallet-Bridging-Header.hh"; sourceTree = "<group>"; };
 		41B022031D4330A600B5B801 /* core_rpc_server_commands_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_commands_defs.h; sourceTree = "<group>"; };
 		41B022041D4330A600B5B801 /* core_rpc_server_error_codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_error_codes.h; sourceTree = "<group>"; };
@@ -291,8 +291,6 @@
 		41CE5D031DC567E0007AAE50 /* varint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = varint.h; sourceTree = "<group>"; };
 		41D6C3901D376DEC00178107 /* MoneroWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneroWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D6C3931D376DEC00178107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41D6C3951D376DEC00178107 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		41D6C3971D376DEC00178107 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		41D6C39A1D376DEC00178107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41D6C39C1D376DEC00178107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41D6C39F1D376DEC00178107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -704,8 +702,6 @@
 				4119F6021D39C00600743CF5 /* bitmonero */,
 				416B673A1D37742C001CB934 /* RPC */,
 				41D6C3931D376DEC00178107 /* AppDelegate.swift */,
-				41D6C3951D376DEC00178107 /* FirstViewController.swift */,
-				41D6C3971D376DEC00178107 /* SecondViewController.swift */,
 				41D6C3991D376DEC00178107 /* Main.storyboard */,
 				41D6C39C1D376DEC00178107 /* Assets.xcassets */,
 				41D6C39E1D376DEC00178107 /* LaunchScreen.storyboard */,
@@ -714,6 +710,7 @@
 				418241811DCF40A700A666C2 /* MainViewController.swift */,
 				418241851DCF41E500A666C2 /* CreateWalletViewController.swift */,
 				418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */,
+				4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */,
 				418241891DCF444E00A666C2 /* WalletViewController.swift */,
 				418241831DCF411000A666C2 /* WalletStore.swift */,
 			);
@@ -906,6 +903,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4182418C1DCF6A9100A666C2 /* RecoverWalletViewController.swift in Sources */,
 				418241841DCF411000A666C2 /* WalletStore.swift in Sources */,
 				412565B21D3A1F2B0055700F /* hash.c in Sources */,
 				412568D51D3A34100055700F /* oaes_lib.c in Sources */,
@@ -920,7 +918,6 @@
 				412568E41D3A55F40055700F /* blake256.c in Sources */,
 				41CE5CED1DC56661007AAE50 /* utils.cpp in Sources */,
 				416B673C1D377474001CB934 /* BlockHeader.swift in Sources */,
-				41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */,
 				410EC6521D7C759E008720C5 /* rctTypes.cpp in Sources */,
 				412568DC1D3A55920055700F /* hash-extra-blake.c in Sources */,
 				412568E71D3A56110055700F /* jh.c in Sources */,
@@ -945,7 +942,6 @@
 				418241881DCF43DB00A666C2 /* OpenWalletViewController.swift in Sources */,
 				412565B81D3A1F2B0055700F /* difficulty.cpp in Sources */,
 				410EC64F1D7C759E008720C5 /* rctCryptoOps.c in Sources */,
-				41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */,
 				410EC6501D7C759E008720C5 /* rctOps.cpp in Sources */,
 				412E204F1DCE185B00F1BB42 /* TransactionHistory.mm in Sources */,
 				412565BA1D3A1F2B0055700F /* electrum-words.cpp in Sources */,

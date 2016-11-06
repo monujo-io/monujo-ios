@@ -13,7 +13,7 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var addressLabel: UITextView!
     @IBOutlet weak var mnemonicLabel: UITextView!
     @IBOutlet weak var balanceLabel: UILabel!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let wallet = WalletStore.wallet else {
