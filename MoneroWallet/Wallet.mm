@@ -6,15 +6,18 @@
 //  Copyright © 2016 Ugo Bataillard. All rights reserved.
 //
 
-#import "Wallet.h"
+#import "Wallet.hh"
+#import "TransactionHistory.hh"
+#import "PendingTransaction.hh"
 #import "wallet/wallet2_api.h"
+
 
 @interface Wallet() {
     Bitmonero::Wallet * m_walletImpl;
     UInt64 m_daemonBlockChainHeight;
     UInt64 m_daemonBlockChainTargetHeight;
     int    m_daemonBlockChainHeightTtl;
-    //TransactionHistory * m_history;
+    TransactionHistory * m_history;
 }
 @end
 
@@ -22,22 +25,26 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
 
 @implementation Wallet
 
-- (id)initWithWallet: (Bitmonero::Wallet*) w {
+- (id)init: (void *) internal {
     
     self = [super init];
     
     if (self) {
-        m_walletImpl = w;
-        //m_history = NULL;
-        //m_historyModel = NULL;
+        m_walletImpl = (Bitmonero::Wallet *) internal;
         m_daemonBlockChainHeight = 0;
         m_daemonBlockChainHeightTtl = DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
         
-        //m_history = new TransactionHistory(m_walletImpl->history(), this);
+        m_history = [[TransactionHistory alloc] initWithWallet:self];
+        
+        //TODO Implement listener
         //m_walletImpl->setListener(new WalletListenerImpl(this));
         
     }
     return self;
+}
+
+- (void *) internal {
+    return m_walletImpl;
 }
 
 - (void)dealloc {
@@ -145,13 +152,14 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
     return m_daemonBlockChainTargetHeight;
 }
 
-//- (bool) refresh {
-//    bool result = m_walletImpl->refresh();
-//    m_history->refresh();
-////    if (result)
-////        updated();
-//    return result;
-//}
+- (bool) refresh {
+    bool result = m_walletImpl->refresh();
+    [m_history refresh];
+//    if (result) {
+//        [self updated];
+//    }
+    return result;
+}
 
 - (void) refreshAsync {
     m_walletImpl->refreshAsync();
@@ -166,44 +174,28 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
     return m_walletImpl->autoRefreshInterval();
 }
 
-//- (PendingTransaction*) createTransactionToAddress: (NSString*) dst_addr
-//                                     withPaymentId: (NSString*) payment_id
-//                                        andAmount: (UInt64) amount
-//                                    andMixinCount: (UInt32) mixin_count
-//                                       andPriority: (int) priority //PendingTransaction::Priority priority)
-//{
-//    Bitmonero::PendingTransaction * ptImpl = m_walletImpl->createTransaction(std::string([dst_addr UTF8String]),
-//                                                                             std::string([payment_id UTF8String]),
-//                                                                             amount,
-//                                                                             mixin_count,
-//                                                                             static_cast<Bitmonero::PendingTransaction::Priority>(priority));
-//    PendingTransaction * result = new PendingTransaction(ptImpl, this);
-//    return result;
-//}
-//
-//- (void) disposeTransaction: (PendingTransaction *) t {
-//    m_walletImpl->disposeTransaction(t->m_pimpl);
-//    delete t;
-//    [t destroy]
-//}
-//
-//- (TransactionHistory*) history {
-//    return m_history;
-//}
-//
-//- (TransactionHistorySortFilterModel*) historyModel
-//{
-//    if (!m_historyModel) {
-//        Wallet * w = const_cast<Wallet*>(this);
-//        m_historyModel = new TransactionHistoryModel(w);
-//        m_historyModel->setTransactionHistory(this->history());
-//        m_historySortFilterModel = new TransactionHistorySortFilterModel(w);
-//        m_historySortFilterModel->setSourceModel(m_historyModel);
-//    }
-//    
-//    return m_historySortFilterModel;
-//}
+- (PendingTransaction*) createTransactionToAddress: (NSString*) dst_addr
+                                     withPaymentId: (NSString*) payment_id
+                                        andAmount: (UInt64) amount
+                                    andMixinCount: (UInt32) mixin_count
+                                       andPriority: (int) priority //PendingTransaction::Priority priority)
+{
+    Bitmonero::PendingTransaction * ptImpl = m_walletImpl->createTransaction(std::string([dst_addr UTF8String]),
+                                                                             std::string([payment_id UTF8String]),
+                                                                             amount,
+                                                                             mixin_count,
+                                                                             static_cast<Bitmonero::PendingTransaction::Priority>(priority));
+    PendingTransaction * result =  [[PendingTransaction alloc] init: ptImpl];
+    return result;
+}
 
+- (void) disposeTransaction: (PendingTransaction *) t {
+    m_walletImpl->disposeTransaction((Bitmonero::PendingTransaction*)t.internal);
+}
+
+- (TransactionHistory*) history {
+    return m_history;
+}
 
 - (NSString*) generatePaymentId
 {
@@ -218,3 +210,5 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
 
 
 @end
+
+

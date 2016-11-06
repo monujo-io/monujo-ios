@@ -12,9 +12,11 @@ import UIKit
 class FirstViewController: UIViewController {
 
     let daemonURL: String = "http://node.moneroworld.com:18081"
- 
-    let wallet: Wallet! = nil;// Wallet(daemonAddress: "http://node.moneroworld.com:18081")
-
+    
+    let walletManager: WalletManager! = WalletManager.getInstance();// Wallet(daemonAddress: "http://node.moneroworld.com:18081")
+    var wallet: Wallet? = nil
+    
+    
     @IBOutlet weak var outputTV: UITextView?
     @IBOutlet weak var generateButton: UIButton?
 
@@ -25,6 +27,11 @@ class FirstViewController: UIViewController {
     @IBAction func openClicked(_ sender: UIButton) {
         open()
     }
+    
+    @IBAction func initClicked(_ sender: UIButton) {
+        initWallet()
+    }
+
 
     @IBAction func refreshClicked(_ sender: UIButton) {
         refresh()
@@ -51,8 +58,8 @@ class FirstViewController: UIViewController {
     func open() {
         if let path = walletPath() {
             //writing
-            let res = "";//wallet.open(inFile: path, withPassword: "groscaca", andTestNet: false)
-            outputText(res)
+            wallet =  walletManager.openWallet(withPath: path, andPassword: "groscaca", inTestNet: false);
+            outputText(wallet?.address() ?? "Error opening wallet")
         } else {
             Swift.debugPrint("Could not find document directory")
         }
@@ -62,11 +69,18 @@ class FirstViewController: UIViewController {
 
         if let path = walletPath() {
             //writing
-            let res = "";//wallet.generate(inFile: path, withPassword: "groscaca", andTestNet: false)
-            outputText(res)
+            wallet =  walletManager.createWallet(withPath: path, andPassword: "groscaca", andLanguage: "English", inTestNet: false)
+            outputText(wallet?.address() ?? "Error creating wallet")
         } else {
             Swift.debugPrint("Could not find document directory")
         }
+
+    }
+    
+    func initWallet() {
+        Swift.debugPrint("Initting wallet")
+        wallet?.initWallet(withDaemonAddress: daemonURL, andUpperTransactionLimit: 0, andIsRecovering: false, andRestoreHeight: 0)
+        Swift.debugPrint("Initted wallet")
 
     }
 

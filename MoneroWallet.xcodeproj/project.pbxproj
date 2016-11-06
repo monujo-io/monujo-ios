@@ -13,8 +13,6 @@
 		410EC6511D7C759E008720C5 /* rctSigs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410EC64A1D7C759E008720C5 /* rctSigs.cpp */; };
 		410EC6521D7C759E008720C5 /* rctTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 410EC64C1D7C759E008720C5 /* rctTypes.cpp */; };
 		4119F6011D39B56200743CF5 /* Boost in Resources */ = {isa = PBXBuildFile; fileRef = 4119F6001D39B56100743CF5 /* Boost */; };
-		412565A81D3A1F2B0055700F /* base58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412565551D3A1F2B0055700F /* base58.cpp */; };
-		412565AA1D3A1F2B0055700F /* command_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412565591D3A1F2B0055700F /* command_line.cpp */; };
 		412565AC1D3A1F2B0055700F /* i18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4125655E1D3A1F2B0055700F /* i18n.cpp */; };
 		412565AE1D3A1F2B0055700F /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412565681D3A1F2B0055700F /* util.cpp */; };
 		412565AF1D3A1F2B0055700F /* chacha8.c in Sources */ = {isa = PBXBuildFile; fileRef = 4125656C1D3A1F2B0055700F /* chacha8.c */; };
@@ -44,6 +42,10 @@
 		412568ED1D3A56A90055700F /* tree-hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 412568E91D3A56A90055700F /* tree-hash.c */; };
 		412568EE1D3A56A90055700F /* skein.c in Sources */ = {isa = PBXBuildFile; fileRef = 412568EA1D3A56A90055700F /* skein.c */; };
 		412568EF1D3A56A90055700F /* hash-extra-skein.c in Sources */ = {isa = PBXBuildFile; fileRef = 412568EC1D3A56A90055700F /* hash-extra-skein.c */; };
+		412E204F1DCE185B00F1BB42 /* TransactionHistory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */; };
+		412E20551DCE2F3400F1BB42 /* PendingTransactionm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */; };
+		412E20581DCE324000F1BB42 /* TransactionInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E20571DCE324000F1BB42 /* TransactionInfo.mm */; };
+		412E205B1DCE339200F1BB42 /* WalletManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E205A1DCE339200F1BB42 /* WalletManager.mm */; };
 		416B673C1D377474001CB934 /* BlockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673B1D377474001CB934 /* BlockHeader.swift */; };
 		416B673E1D377A73001CB934 /* RPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673D1D377A73001CB934 /* RPCService.swift */; };
 		416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673F1D377BE2001CB934 /* RPCInfo.swift */; };
@@ -57,9 +59,7 @@
 		41CE5D041DC567E0007AAE50 /* base58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF01DC567E0007AAE50 /* base58.cpp */; };
 		41CE5D051DC567E0007AAE50 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 41CE5CF31DC567E0007AAE50 /* CMakeLists.txt */; };
 		41CE5D061DC567E0007AAE50 /* command_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF41DC567E0007AAE50 /* command_line.cpp */; };
-		41CE5D071DC567E0007AAE50 /* i18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CF71DC567E0007AAE50 /* i18n.cpp */; };
 		41CE5D081DC567E0007AAE50 /* perf_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CFB1DC567E0007AAE50 /* perf_timer.cpp */; };
-		41CE5D091DC567E0007AAE50 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5D011DC567E0007AAE50 /* util.cpp */; };
 		41D6C3941D376DEC00178107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3931D376DEC00178107 /* AppDelegate.swift */; };
 		41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3951D376DEC00178107 /* FirstViewController.swift */; };
 		41D6C3981D376DEC00178107 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3971D376DEC00178107 /* SecondViewController.swift */; };
@@ -230,15 +230,23 @@
 		412568EB1D3A56A90055700F /* skein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skein.h; sourceTree = "<group>"; };
 		412568EC1D3A56A90055700F /* hash-extra-skein.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "hash-extra-skein.c"; sourceTree = "<group>"; };
 		412568F01D3A56C70055700F /* skein_port.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = skein_port.h; sourceTree = "<group>"; };
+		412E204D1DCE185B00F1BB42 /* TransactionHistory.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransactionHistory.hh; sourceTree = "<group>"; };
+		412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransactionHistory.mm; sourceTree = "<group>"; };
+		412E20531DCE2F3400F1BB42 /* PendingTransaction.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PendingTransaction.hh; sourceTree = "<group>"; };
+		412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PendingTransactionm.mm; sourceTree = "<group>"; };
+		412E20561DCE324000F1BB42 /* TransactionInfo.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransactionInfo.hh; sourceTree = "<group>"; };
+		412E20571DCE324000F1BB42 /* TransactionInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransactionInfo.mm; sourceTree = "<group>"; };
+		412E20591DCE339200F1BB42 /* WalletManager.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WalletManager.hh; sourceTree = "<group>"; };
+		412E205A1DCE339200F1BB42 /* WalletManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WalletManager.mm; sourceTree = "<group>"; };
 		416B673B1D377474001CB934 /* BlockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockHeader.swift; sourceTree = "<group>"; };
 		416B673D1D377A73001CB934 /* RPCService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPCService.swift; sourceTree = "<group>"; };
 		416B673F1D377BE2001CB934 /* RPCInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPCInfo.swift; sourceTree = "<group>"; };
-		41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoneroWallet-Bridging-Header.h"; sourceTree = "<group>"; };
+		41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "MoneroWallet-Bridging-Header.hh"; sourceTree = "<group>"; };
 		41B022031D4330A600B5B801 /* core_rpc_server_commands_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_commands_defs.h; sourceTree = "<group>"; };
 		41B022041D4330A600B5B801 /* core_rpc_server_error_codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_error_codes.h; sourceTree = "<group>"; };
-		41B0220A1D43329600B5B801 /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
+		41B0220A1D43329600B5B801 /* Wallet.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Wallet.hh; sourceTree = "<group>"; };
 		41B0220B1D43329600B5B801 /* Wallet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Wallet.mm; sourceTree = "<group>"; };
-		41CE5CD01DC5656F007AAE50 /* wallet2_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wallet2_api.h; sourceTree = "<group>"; };
+		41CE5CD01DC5656F007AAE50 /* wallet2_api.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = wallet2_api.h; sourceTree = "<group>"; };
 		41CE5CDE1DC56661007AAE50 /* common_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_defines.h; sourceTree = "<group>"; };
 		41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pending_transaction.cpp; sourceTree = "<group>"; };
 		41CE5CE01DC56661007AAE50 /* pending_transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pending_transaction.h; sourceTree = "<group>"; };
@@ -615,8 +623,16 @@
 		41B021601D43094D00B5B801 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				41B0220A1D43329600B5B801 /* Wallet.h */,
+				412E20531DCE2F3400F1BB42 /* PendingTransaction.hh */,
+				412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */,
+				412E204D1DCE185B00F1BB42 /* TransactionHistory.hh */,
+				412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */,
+				412E20561DCE324000F1BB42 /* TransactionInfo.hh */,
+				412E20571DCE324000F1BB42 /* TransactionInfo.mm */,
+				41B0220A1D43329600B5B801 /* Wallet.hh */,
 				41B0220B1D43329600B5B801 /* Wallet.mm */,
+				412E20591DCE339200F1BB42 /* WalletManager.hh */,
+				412E205A1DCE339200F1BB42 /* WalletManager.mm */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -684,7 +700,7 @@
 				41D6C39C1D376DEC00178107 /* Assets.xcassets */,
 				41D6C39E1D376DEC00178107 /* LaunchScreen.storyboard */,
 				41D6C3A11D376DEC00178107 /* Info.plist */,
-				41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.h */,
+				41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */,
 			);
 			path = MoneroWallet;
 			sourceTree = "<group>";
@@ -726,7 +742,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41D6C3BA1D376DEC00178107 /* Build configuration list for PBXNativeTarget "MoneroWallet" */;
 			buildPhases = (
-				41B021F31D4319C000B5B801 /* Swiftpp */,
 				41D6C38C1D376DEC00178107 /* Sources */,
 				41D6C38D1D376DEC00178107 /* Frameworks */,
 				41D6C38E1D376DEC00178107 /* Resources */,
@@ -784,7 +799,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Ugo Bataillard";
 				TargetAttributes = {
 					41D6C38F1D376DEC00178107 = {
@@ -869,20 +884,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		41B021F31D4319C000B5B801 /* Swiftpp */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swiftpp;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#\"$PROJECT_DIR\"/../swiftpp/swiftpp -I \"$PROJECT_DIR/bitmonero/src/\" -I \"$PROJECT_DIR/Boost/libs/boost/include/\" -I \"$PROJECT_DIR/bitmonero/contrib/epee/include\" \"$PROJECT_DIR/MoneroWallet/cxx-Bridging-Header.h\"";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -914,34 +915,34 @@
 				412565B61D3A1F2B0055700F /* cryptonote_basic_impl.cpp in Sources */,
 				410EC6431D7C71AE008720C5 /* wallet2.cpp in Sources */,
 				412565B41D3A1F2B0055700F /* random.c in Sources */,
-				41CE5D071DC567E0007AAE50 /* i18n.cpp in Sources */,
 				41CE5D061DC567E0007AAE50 /* command_line.cpp in Sources */,
 				412565B01D3A1F2B0055700F /* crypto-ops.c in Sources */,
 				41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */,
 				412568CF1D3A33610055700F /* slow-hash.c in Sources */,
+				412E20551DCE2F3400F1BB42 /* PendingTransactionm.mm in Sources */,
 				412568DB1D3A55920055700F /* aesb.c in Sources */,
-				412565A81D3A1F2B0055700F /* base58.cpp in Sources */,
 				41B0220C1D43329600B5B801 /* Wallet.mm in Sources */,
 				412565AE1D3A1F2B0055700F /* util.cpp in Sources */,
 				412565B71D3A1F2B0055700F /* cryptonote_format_utils.cpp in Sources */,
 				412565B81D3A1F2B0055700F /* difficulty.cpp in Sources */,
-				41CE5D091DC567E0007AAE50 /* util.cpp in Sources */,
 				410EC64F1D7C759E008720C5 /* rctCryptoOps.c in Sources */,
 				41D6C3961D376DEC00178107 /* FirstViewController.swift in Sources */,
 				410EC6501D7C759E008720C5 /* rctOps.cpp in Sources */,
+				412E204F1DCE185B00F1BB42 /* TransactionHistory.mm in Sources */,
 				412565BA1D3A1F2B0055700F /* electrum-words.cpp in Sources */,
 				412568EE1D3A56A90055700F /* skein.c in Sources */,
 				412565B31D3A1F2B0055700F /* keccak.c in Sources */,
+				412E20581DCE324000F1BB42 /* TransactionInfo.mm in Sources */,
 				41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */,
 				412568ED1D3A56A90055700F /* tree-hash.c in Sources */,
 				412568E11D3A55D20055700F /* groestl.c in Sources */,
 				412568DD1D3A55920055700F /* hash-extra-jh.c in Sources */,
+				412E205B1DCE339200F1BB42 /* WalletManager.mm in Sources */,
 				416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */,
 				412568CD1D3A2BA10055700F /* miner.cpp in Sources */,
 				412565B51D3A1F2B0055700F /* account.cpp in Sources */,
 				412565AF1D3A1F2B0055700F /* chacha8.c in Sources */,
 				41CE5CEC1DC56661007AAE50 /* transaction_info.cpp in Sources */,
-				412565AA1D3A1F2B0055700F /* command_line.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,6 +1094,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Boost/libs/boost/include",
 					"$(SRCROOT)/bitmonero/src",
@@ -1131,7 +1133,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.hh";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1144,6 +1146,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Boost/libs/boost/include",
 					"$(SRCROOT)/bitmonero/src",
@@ -1182,7 +1185,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ugo.MoneroWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MoneroWallet/MoneroWallet-Bridging-Header.hh";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
