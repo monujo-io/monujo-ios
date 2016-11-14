@@ -7,3 +7,4 @@
 //
 
 #import "WalletManager.hh"
+#import "TransactionInfo.hh"

@@ -7,7 +7,6 @@
 //
 
 #import "Wallet.hh"
-#import "TransactionHistory.hh"
 #import "PendingTransaction.hh"
 #import "wallet/wallet2_api.h"
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class WalletViewController: UIViewController {
-    
+
     @IBOutlet weak var addressLabel: UITextView!
     @IBOutlet weak var mnemonicLabel: UITextView!
     @IBOutlet weak var balanceLabel: UILabel!

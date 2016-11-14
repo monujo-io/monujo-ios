@@ -9,7 +9,7 @@
 import UIKit
 
 class OpenWalletViewController: UIViewController {
-    
+
     @IBOutlet weak var passwordTF: UITextField!
 
     let walletManager = WalletStore.walletManager

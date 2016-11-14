@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Wallet.hh"
-
-
+@class Wallet;
 
 @interface TransactionHistory : NSObject
 

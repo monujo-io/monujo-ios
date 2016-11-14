@@ -55,6 +55,7 @@
 		418241881DCF43DB00A666C2 /* OpenWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */; };
 		4182418A1DCF444E00A666C2 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241891DCF444E00A666C2 /* WalletViewController.swift */; };
 		4182418C1DCF6A9100A666C2 /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */; };
+		4197F3BD1DD9377700B4D03A /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */; };
 		41B0220C1D43329600B5B801 /* Wallet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41B0220B1D43329600B5B801 /* Wallet.mm */; };
 		41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */; };
 		41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE11DC56661007AAE50 /* transaction_history.cpp */; };
@@ -251,6 +252,7 @@
 		418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWalletViewController.swift; sourceTree = "<group>"; };
 		418241891DCF444E00A666C2 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
 		41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "MoneroWallet-Bridging-Header.hh"; sourceTree = "<group>"; };
 		41B022031D4330A600B5B801 /* core_rpc_server_commands_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_commands_defs.h; sourceTree = "<group>"; };
 		41B022041D4330A600B5B801 /* core_rpc_server_error_codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_error_codes.h; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */,
 				418241891DCF444E00A666C2 /* WalletViewController.swift */,
 				418241831DCF411000A666C2 /* WalletStore.swift */,
+				4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */,
 			);
 			path = MoneroWallet;
 			sourceTree = "<group>";
@@ -953,6 +956,7 @@
 				412568E11D3A55D20055700F /* groestl.c in Sources */,
 				412568DD1D3A55920055700F /* hash-extra-jh.c in Sources */,
 				418241821DCF40A700A666C2 /* MainViewController.swift in Sources */,
+				4197F3BD1DD9377700B4D03A /* TransactionHistoryViewController.swift in Sources */,
 				412E205B1DCE339200F1BB42 /* WalletManager.mm in Sources */,
 				416B67401D377BE2001CB934 /* RPCInfo.swift in Sources */,
 				412568CD1D3A2BA10055700F /* miner.cpp in Sources */,

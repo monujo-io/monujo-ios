@@ -9,7 +9,7 @@
 import UIKit
 
 class RecoverWalletViewController: UIViewController {
-    
+
     @IBOutlet weak var memoTF: UITextView!
 
     let walletManager = WalletStore.walletManager

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TransactionHistory.hh"
 
 extern int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
 
@@ -54,6 +54,8 @@ extern int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
 
 
 @property NSString *paymentId;
+@property(readonly) TransactionHistory* history;
+
 
 @end
 

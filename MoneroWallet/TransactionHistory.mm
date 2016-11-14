@@ -10,13 +10,12 @@
 
 #import "wallet/wallet2_api.h"
 #import "TransactionInfo.hh"
-
+#import "Wallet.hh"
 
 @interface TransactionHistory() {
     Bitmonero::TransactionHistory* m_transactionHistoryImpl;
 }
 @end
-
 
 
 @implementation TransactionHistory
