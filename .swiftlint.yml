@@ -4,3 +4,5 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
   - MoneroWallet/AppDelegate.swift
+  - bitmonero
+  - Boost
