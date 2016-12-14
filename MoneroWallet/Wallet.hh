@@ -47,9 +47,14 @@
 - (UInt64) balance;
 - (UInt64) unlockedBalance;
 - (UInt64) blockChainHeight;
+- (UInt64) daemonBlockChainHeight;
+- (UInt64) daemonBlockChainTargetHeight;
 
 - (NSString*) generatePaymentId;
 - (NSString*) integratedAddressWithPaymentId: (NSString*) paymentId;
+
+- (bool) refresh;
+- (void) refreshAsync;
 
 
 @property NSString *paymentId;

@@ -73,12 +73,18 @@ private:
     Bitmonero::Wallet * m_walletImpl;
     UInt64 m_daemonBlockChainHeight;
     UInt64 m_daemonBlockChainTargetHeight;
-    int    m_daemonBlockChainHeightTtl;
+    CFTimeInterval    m_daemonBlockChainHeightTtl;
+    CFAbsoluteTime    m_daemonBlockChainHeightTime;
+
+    CFTimeInterval    m_daemonBlockChainTargetHeightTtl;
+    CFAbsoluteTime    m_daemonBlockChainTargetHeightTime;
+
     TransactionHistory * m_history;
 }
 @end
 
-int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
+CFTimeInterval const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 10;
+CFTimeInterval const DAEMON_BLOCKCHAIN_TARGET_HEIGHT_CACHE_TTL_SECONDS = 60;
 
 @implementation Wallet
 
@@ -90,7 +96,10 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
         m_walletImpl = (Bitmonero::Wallet *) internal;
         m_daemonBlockChainHeight = 0;
         m_daemonBlockChainHeightTtl = DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
-        
+        m_daemonBlockChainHeightTime = 0;
+        m_daemonBlockChainTargetHeightTtl = DAEMON_BLOCKCHAIN_TARGET_HEIGHT_CACHE_TTL_SECONDS;
+        m_daemonBlockChainTargetHeightTime = 0;
+
         m_history = [[TransactionHistory alloc] initWithWallet:self];
 
         //TODO Implement listener
@@ -192,19 +201,25 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
     return m_walletImpl->blockChainHeight();
 }
 
-//- (UInt64) daemonBlockChainHeight {
-//    // cache daemon blockchain height for some time (60 seconds by default)
-//    
-//    if (m_daemonBlockChainHeight == 0
-//        || m_daemonBlockChainHeightTime.elapsed() / 1000 > m_daemonBlockChainHeightTtl) {
-//        m_daemonBlockChainHeight = m_walletImpl->daemonBlockChainHeight();
-//        m_daemonBlockChainHeightTime.restart();
-//    }
-//    return m_daemonBlockChainHeight;
-//}
+- (UInt64) daemonBlockChainHeight {
+    // cache daemon blockchain height for some time (60 seconds by default)
+
+    if (m_daemonBlockChainHeight == 0
+        || CFAbsoluteTimeGetCurrent() - m_daemonBlockChainHeightTime > m_daemonBlockChainHeightTtl) {
+        m_daemonBlockChainHeight = m_walletImpl->daemonBlockChainHeight();
+        m_daemonBlockChainHeightTime = CFAbsoluteTimeGetCurrent();
+    }
+    return m_daemonBlockChainHeight;
+}
 
 - (UInt64) daemonBlockChainTargetHeight {
-    m_daemonBlockChainTargetHeight = m_walletImpl->daemonBlockChainTargetHeight();
+    // cache daemon blockchain height for some time (60 seconds by default)
+
+    if (m_daemonBlockChainTargetHeight == 0
+        || CFAbsoluteTimeGetCurrent() - m_daemonBlockChainTargetHeightTime > m_daemonBlockChainTargetHeightTtl) {
+        m_daemonBlockChainTargetHeight = m_walletImpl->daemonBlockChainTargetHeight();
+        m_daemonBlockChainTargetHeightTime = CFAbsoluteTimeGetCurrent();
+    }
     return m_daemonBlockChainTargetHeight;
 }
 
