@@ -31,10 +31,12 @@ class WalletStore {
     static var wallet: Wallet? = nil
 
     static func initWallet(recovering: Bool = false) {
-        wallet?.initWalletAsync(withDaemonAddress: daemonURL,
-                                andUpperTransactionLimit: 0,
-                                andIsRecovering: recovering,
-                                andRestoreHeight: 0)
+        DispatchQueue.global(qos: .background).async {
+            self.wallet?.initWalletAsync(withDaemonAddress: daemonURL,
+                                    andUpperTransactionLimit: 0,
+                                    andIsRecovering: recovering,
+                                    andRestoreHeight: 0)
+        }
     }
 
 }
