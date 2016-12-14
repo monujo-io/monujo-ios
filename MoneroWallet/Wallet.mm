@@ -11,6 +11,64 @@
 #import "wallet/wallet2_api.h"
 
 
+class WalletListenerImpl : public Bitmonero::WalletListener
+{
+public:
+    WalletListenerImpl(Wallet * w)
+    : m_wallet(w)
+    {
+
+    }
+
+    virtual void moneySpent(const std::string &txId, uint64_t amount)
+    {
+        if (m_wallet.delegate != nil && [m_wallet.delegate respondsToSelector: @selector(walletMoneySpent:transactionId:amount:)]) {
+            [m_wallet.delegate walletMoneySpent: m_wallet
+                                  transactionId: [NSString stringWithUTF8String:txId.c_str()]
+                                         amount: amount];
+        }
+    }
+
+
+    virtual void moneyReceived(const std::string &txId, uint64_t amount)
+    {
+        if (m_wallet.delegate != nil && [m_wallet.delegate respondsToSelector: @selector(walletMoneyReceived:transactionId:amount:)]) {
+
+            [m_wallet.delegate walletMoneyReceived: m_wallet
+                                     transactionId:[NSString stringWithUTF8String:txId.c_str()]
+                                            amount: amount];
+        }
+    }
+
+    virtual void newBlock(uint64_t height)
+    {
+        if (m_wallet.delegate != nil && [m_wallet.delegate respondsToSelector: @selector(walletNewBlock:height:)]) {
+
+            [m_wallet.delegate walletNewBlock: m_wallet
+                                       height: height];
+        }
+    }
+
+    virtual void updated()
+    {
+        if (m_wallet.delegate != nil && [m_wallet.delegate respondsToSelector: @selector(walletUpdated:)]) {
+            [m_wallet.delegate walletUpdated: m_wallet];
+        }
+    }
+
+    // called when wallet refreshed by background thread or explicitly
+    virtual void refreshed()
+    {
+        if (m_wallet.delegate != nil && [m_wallet.delegate respondsToSelector: @selector(walletRefreshed:)]) {
+            [m_wallet.delegate walletRefreshed: m_wallet];
+        }
+    }
+
+private:
+    Wallet * m_wallet;
+};
+
+
 @interface Wallet() {
     Bitmonero::Wallet * m_walletImpl;
     UInt64 m_daemonBlockChainHeight;
@@ -25,19 +83,18 @@ int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS = 60;
 @implementation Wallet
 
 - (id)init: (void *) internal {
-    
+
     self = [super init];
-    
+
     if (self) {
         m_walletImpl = (Bitmonero::Wallet *) internal;
         m_daemonBlockChainHeight = 0;
         m_daemonBlockChainHeightTtl = DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
         
         m_history = [[TransactionHistory alloc] initWithWallet:self];
-        
+
         //TODO Implement listener
-        //m_walletImpl->setListener(new WalletListenerImpl(this));
-        
+        m_walletImpl->setListener(new WalletListenerImpl(self));
     }
     return self;
 }

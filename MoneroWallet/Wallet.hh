@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TransactionHistory.hh"
 
-extern int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
-
+@protocol WalletDelegate;
 
 @interface Wallet : NSObject
 
@@ -55,8 +54,30 @@ extern int const DAEMON_BLOCKCHAIN_HEIGHT_CACHE_TTL_SECONDS;
 
 @property NSString *paymentId;
 @property(readonly) TransactionHistory* history;
-
+@property (nonatomic, weak) id<WalletDelegate> delegate;
 
 @end
 
+@protocol WalletDelegate<NSObject>
+
+//@required
+
+@optional
+- (void) walletMoneySpent: (Wallet*) wallet
+            transactionId: (NSString*) txId
+                   amount: (uint64_t) amount;
+
+- (void) walletMoneyReceived: (Wallet*) wallet
+               transactionId: (NSString*) txId
+                      amount: (uint64_t) amount;
+
+- (void) walletNewBlock: (Wallet*) wallet
+                 height:(uint64_t) height;
+
+- (void) walletUpdated:(Wallet*) wallet;
+
+// called when wallet refreshed by background thread or explicitly
+- (void) walletRefreshed:(Wallet *) wallet;
+
+@end
 
