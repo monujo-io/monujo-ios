@@ -10,19 +10,24 @@ import UIKit
 
 class RecoverWalletViewController: UIViewController {
 
-    @IBOutlet weak var memoTF: UITextView!
+    @IBOutlet weak var walletNameTF: UITextField!
+    @IBOutlet weak var memoTV: UITextView!
 
     let walletManager = WalletStore.walletManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memoTF.delegate = self
+        memoTV.delegate = self
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 
-        let wallet =  walletManager.recoveryWallet(withPath: WalletStore.walletFile(),
-                                                   andMemo: memoTF.text ?? "",
+        guard let walletName = walletNameTF.text, !walletName.isEmpty else {
+            return false
+        }
+
+        let wallet =  walletManager.recoveryWallet(withPath: WalletStore.walletFile(filename: walletName),
+                                                   andMemo: memoTV.text ?? "",
                                                    andRestoreHeight: 0,
                                                    inTestNet: WalletStore.testNet)
 

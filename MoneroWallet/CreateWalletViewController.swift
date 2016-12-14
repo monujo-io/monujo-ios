@@ -11,6 +11,7 @@ import UIKit
 class CreateViewController: UIViewController {
 
     @IBOutlet weak var languageTV: UILabel!
+    @IBOutlet weak var walletNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
 
     let walletManager = WalletStore.walletManager
@@ -22,7 +23,11 @@ class CreateViewController: UIViewController {
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 
-        let wallet =  walletManager.createWallet(withPath: WalletStore.walletFile(),
+        guard let walletName = walletNameTF.text, !walletName.isEmpty else {
+            return false
+        }
+        
+        let wallet =  walletManager.createWallet(withPath: WalletStore.walletFile(filename: walletName),
                                                  andPassword: passwordTF.text,
                                                  andLanguage: languageTV.text,
                                                  inTestNet: WalletStore.testNet)

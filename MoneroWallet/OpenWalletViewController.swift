@@ -10,6 +10,7 @@ import UIKit
 
 class OpenWalletViewController: UIViewController {
 
+    @IBOutlet weak var walletNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
 
     let walletManager = WalletStore.walletManager
@@ -21,7 +22,11 @@ class OpenWalletViewController: UIViewController {
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 
-        let wallet =  walletManager.openWallet(withPath: WalletStore.walletFile(),
+        guard let walletName = walletNameTF.text, !walletName.isEmpty else {
+            return false
+        }
+
+        let wallet =  walletManager.openWallet(withPath: WalletStore.walletFile(filename: walletName),
                                                andPassword: passwordTF.text,
                                                inTestNet: WalletStore.testNet)
 
