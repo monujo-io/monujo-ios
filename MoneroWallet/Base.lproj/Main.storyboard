@@ -275,7 +275,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD8-1j-obg">
-                                <rect key="frame" x="155" y="532" width="64" height="30"/>
+                                <rect key="frame" x="155" y="551" width="64" height="30"/>
                                 <state key="normal" title="Generate"/>
                                 <connections>
                                     <action selector="generateClicked" destination="hw0-ls-rQP" eventType="touchUpInside" id="uoJ-Bh-eN1"/>
@@ -287,8 +287,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5f-29-Plh">
+                                <rect key="frame" x="41" y="466" width="293" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsC-e9-pKR">
                                 <rect key="frame" x="139" y="84" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial height (optional)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn2-Vd-IMX">
+                                <rect key="frame" x="41" y="423" width="293" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -296,21 +308,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fn2-Vd-IMX" firstAttribute="leading" secondItem="wB8-lb-6sS" secondAttribute="leadingMargin" constant="25" id="6bF-cD-tOa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LDR-w4-mtk" secondAttribute="trailing" constant="25" id="Dbu-SG-yJS"/>
                             <constraint firstItem="DsC-e9-pKR" firstAttribute="top" secondItem="Mkv-3K-dBO" secondAttribute="bottom" constant="20" id="IUb-BN-Q7T"/>
+                            <constraint firstItem="b5f-29-Plh" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="JqA-93-l30"/>
+                            <constraint firstItem="RD8-1j-obg" firstAttribute="top" secondItem="b5f-29-Plh" secondAttribute="bottom" constant="55" id="P26-Cy-dwh"/>
+                            <constraint firstItem="b5f-29-Plh" firstAttribute="leading" secondItem="wB8-lb-6sS" secondAttribute="leadingMargin" constant="25" id="PE9-Xh-HjE"/>
                             <constraint firstItem="LDR-w4-mtk" firstAttribute="top" secondItem="DsC-e9-pKR" secondAttribute="bottom" constant="22" id="RRA-aF-zCl"/>
                             <constraint firstItem="LDR-w4-mtk" firstAttribute="leading" secondItem="wB8-lb-6sS" secondAttribute="leadingMargin" constant="25" id="Vjg-XI-gch"/>
                             <constraint firstItem="1Rc-Ju-haF" firstAttribute="leading" secondItem="wB8-lb-6sS" secondAttribute="leadingMargin" id="ctf-aS-jrK"/>
-                            <constraint firstItem="hMq-yh-qz9" firstAttribute="top" secondItem="RD8-1j-obg" secondAttribute="bottom" constant="105" id="efV-5S-Csh"/>
+                            <constraint firstItem="Fn2-Vd-IMX" firstAttribute="top" secondItem="1Rc-Ju-haF" secondAttribute="bottom" constant="34" id="dox-Mn-KqX"/>
                             <constraint firstItem="1Rc-Ju-haF" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="fGa-qF-7Zc"/>
+                            <constraint firstItem="Fn2-Vd-IMX" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="jvJ-Su-7gf"/>
                             <constraint firstItem="Khe-q3-WNL" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="oY8-rg-oY1"/>
                             <constraint firstItem="1Rc-Ju-haF" firstAttribute="top" secondItem="Khe-q3-WNL" secondAttribute="bottom" constant="8" id="qhn-T3-qg2"/>
                             <constraint firstItem="RD8-1j-obg" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="scb-sW-Hk4"/>
                             <constraint firstItem="Khe-q3-WNL" firstAttribute="top" secondItem="Mkv-3K-dBO" secondAttribute="bottom" constant="125" id="woA-WB-3TW"/>
+                            <constraint firstItem="b5f-29-Plh" firstAttribute="top" secondItem="Fn2-Vd-IMX" secondAttribute="bottom" constant="22" id="zAa-aJ-FcD"/>
                             <constraint firstItem="DsC-e9-pKR" firstAttribute="centerX" secondItem="wB8-lb-6sS" secondAttribute="centerX" id="zDk-Ro-s1F"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="initialHeightTF" destination="b5f-29-Plh" id="yzP-Ii-1US"/>
                         <outlet property="memoTV" destination="1Rc-Ju-haF" id="4OR-ki-GM9"/>
                         <outlet property="walletNameTF" destination="LDR-w4-mtk" id="VnH-1p-k69"/>
                     </connections>

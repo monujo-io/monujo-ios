@@ -12,6 +12,7 @@ class RecoverWalletViewController: UIViewController {
 
     @IBOutlet weak var walletNameTF: UITextField!
     @IBOutlet weak var memoTV: UITextView!
+    @IBOutlet weak var initialHeightTF: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,18 @@ class RecoverWalletViewController: UIViewController {
 
     @IBAction func generateClicked() {
 
-        guard let walletName = walletNameTF.text, !walletName.isEmpty else {
+        guard let walletName = walletNameTF.text,
+            !walletName.isEmpty,
+            let memo = memoTV.text,
+            !memo.isEmpty
+            else {
             return
         }
 
+        let restoreHeight = UInt64(initialHeightTF.text ?? "0") ?? 0
         let wallet =  WalletStore.recoverWallet(walletName,
-                                                 memo: memoTV.text ?? "",
-                                                 restoreHeight: 0)
+                                                 memo: memo,
+                                                 restoreHeight: restoreHeight)
 
         if wallet != nil {
             dismiss(animated: true, completion: nil)
