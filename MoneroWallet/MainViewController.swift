@@ -8,6 +8,15 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UITabBarController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if WalletStore.savedWalletExists() {
+            _ = WalletStore.openSavedWallet()
+        } else {
+            performSegue(withIdentifier: "LoginSegue", sender: self)
+        }
+    }
 }

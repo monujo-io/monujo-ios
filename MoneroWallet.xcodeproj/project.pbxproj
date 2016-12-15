@@ -74,6 +74,7 @@
 		41D6C3AB1D376DEC00178107 /* MoneroWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3AA1D376DEC00178107 /* MoneroWalletTests.swift */; };
 		41D6C3B61D376DEC00178107 /* MoneroWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6C3B51D376DEC00178107 /* MoneroWalletUITests.swift */; };
 		41DD41D21D3A19FD00296BB4 /* libboost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41DD41D11D3A19FD00296BB4 /* libboost.a */; };
+		41FE12B51E02130500289DF4 /* NewWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE12B41E02130500289DF4 /* NewWalletViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +305,7 @@
 		41D6C3B51D376DEC00178107 /* MoneroWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneroWalletUITests.swift; sourceTree = "<group>"; };
 		41D6C3B71D376DEC00178107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41DD41D11D3A19FD00296BB4 /* libboost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost.a; path = Boost/libs/boost/ios/libboost.a; sourceTree = "<group>"; };
+		41FE12B41E02130500289DF4 /* NewWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWalletViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -710,6 +712,7 @@
 				41D6C3A11D376DEC00178107 /* Info.plist */,
 				41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */,
 				418241811DCF40A700A666C2 /* MainViewController.swift */,
+				41FE12B41E02130500289DF4 /* NewWalletViewController.swift */,
 				418241851DCF41E500A666C2 /* CreateWalletViewController.swift */,
 				418241871DCF43DB00A666C2 /* OpenWalletViewController.swift */,
 				4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */,
@@ -937,6 +940,7 @@
 				412565B01D3A1F2B0055700F /* crypto-ops.c in Sources */,
 				41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */,
 				412568CF1D3A33610055700F /* slow-hash.c in Sources */,
+				41FE12B51E02130500289DF4 /* NewWalletViewController.swift in Sources */,
 				412E20551DCE2F3400F1BB42 /* PendingTransactionm.mm in Sources */,
 				412568DB1D3A55920055700F /* aesb.c in Sources */,
 				41B0220C1D43329600B5B801 /* Wallet.mm in Sources */,

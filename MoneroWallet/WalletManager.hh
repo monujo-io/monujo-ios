@@ -24,7 +24,7 @@ inTestNet: (bool) testnet;
 
 - (Wallet *) recoveryWalletWithPath: (NSString *)path
 andMemo: (NSString *) password
-andRestoreHeight: (int64_t) restoreHeight
+andRestoreHeight: (uint64_t) restoreHeight
 inTestNet: (bool) testnet;
 
 - (bool) closeWallet: (Wallet *) wallet;

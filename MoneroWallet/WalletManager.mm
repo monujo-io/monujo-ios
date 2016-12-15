@@ -47,7 +47,7 @@
 
 - (Wallet *) recoveryWalletWithPath: (NSString *) path
                             andMemo: (NSString *) memo
-                   andRestoreHeight: (int64_t) restoreHeight
+                   andRestoreHeight: (uint64_t) restoreHeight
                           inTestNet: (bool) testnet {
     return [[Wallet alloc] init: m_walletManagerImpl->recoveryWallet(std::string([path UTF8String]), std::string([memo UTF8String]), testnet, restoreHeight)];
     

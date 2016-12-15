@@ -180,6 +180,9 @@ CFTimeInterval const DAEMON_BLOCKCHAIN_TARGET_HEIGHT_CACHE_TTL_SECONDS = 60;
     return m_walletImpl->store(std::string([path UTF8String]));
 }
 
+- (bool) store {
+    return [self store:@""];
+}
 
 - (bool) connectToDaemon {
     return m_walletImpl->connectToDaemon();

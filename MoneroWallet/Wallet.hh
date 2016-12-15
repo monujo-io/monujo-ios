@@ -41,6 +41,7 @@
 - (bool) setPassword: (NSString*) password;
 - (NSString*) address;
 - (bool) store: (NSString*) path;
+- (bool) store;
 
 - (bool) connectToDaemon;
 - (void) setTrustedDaemon: (bool) arg;

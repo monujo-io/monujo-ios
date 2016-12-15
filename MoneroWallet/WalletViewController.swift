@@ -20,10 +20,19 @@ class WalletViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let wallet = WalletStore.wallet else {
+        resetWallet()
+        NotificationCenter.default.addObserver(self, selector: #selector(WalletViewController.resetWallet), name: WalletStore.walletInittedNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: WalletStore.walletInittedNotification, object: nil);
+    }
+
+    func resetWallet() {
+        self.wallet = WalletStore.wallet
+        guard let wallet = self.wallet else {
             return
         }
-        self.wallet = wallet
         wallet.delegate = self
         addressLabel.text = wallet.address()
         mnemonicLabel.text = wallet.getSeed()
@@ -52,6 +61,8 @@ class WalletViewController: UIViewController {
 extension WalletViewController: WalletDelegate {
     func walletMoneySpent(_ wallet: Wallet!, transactionId txId: String!, amount: UInt64) {
         Swift.debugPrint("walletMoneySpent")
+        wallet.refresh()
+        wallet.history.refresh()
         DispatchQueue.main.async {
             self.refreshBalance()
         }
@@ -59,14 +70,15 @@ extension WalletViewController: WalletDelegate {
 
     func walletMoneyReceived(_ wallet: Wallet!, transactionId txId: String!, amount: UInt64) {
         Swift.debugPrint("walletMoneyReceived")
+        wallet.refresh()
+        wallet.history.refresh()
         DispatchQueue.main.async {
             self.refreshBalance()
         }
     }
 
     func walletNewBlock(_ wallet: Wallet!, height: UInt64) {
-        Swift.debugPrint("walletNewBlock: ", height)
-        //refreshBalance()
+        //Swift.debugPrint("walletNewBlock: ", height)
         if CFAbsoluteTimeGetCurrent() - lastTimeRefreshed > 1 {
             lastTimeRefreshed = CFAbsoluteTimeGetCurrent()
             DispatchQueue.main.async {
@@ -85,6 +97,9 @@ extension WalletViewController: WalletDelegate {
 
     func walletRefreshed(_ wallet: Wallet!) {
         Swift.debugPrint("walletRefreshed")
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: WalletStore.isRecoveringKey)
+        wallet.store()
         DispatchQueue.main.async {
             self.refreshBlockHeights()
             self.refreshBalance()

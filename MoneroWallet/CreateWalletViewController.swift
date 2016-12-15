@@ -21,21 +21,19 @@ class CreateViewController: UIViewController {
         passwordTF.delegate = self
     }
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    @IBAction func generateClicked() {
 
         guard let walletName = walletNameTF.text, !walletName.isEmpty else {
-            return false
+            return
         }
         
-        let wallet =  walletManager.createWallet(withPath: WalletStore.walletFile(filename: walletName),
-                                                 andPassword: passwordTF.text,
-                                                 andLanguage: languageTV.text,
-                                                 inTestNet: WalletStore.testNet)
+        let wallet = WalletStore.createWallet(walletName,
+                                              password: passwordTF.text ?? "",
+                                              language: languageTV.text ?? "")
 
-        WalletStore.wallet = wallet
-        WalletStore.initWallet()
-
-        return wallet != nil
+        if wallet != nil {
+            dismiss(animated: true, completion: nil)
+        }
     }
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
