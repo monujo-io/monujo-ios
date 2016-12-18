@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TransactionHistory.hh"
+#import "PendingTransaction.hh"
 
 @protocol WalletDelegate;
 
@@ -53,9 +54,18 @@
 
 - (NSString*) generatePaymentId;
 - (NSString*) integratedAddressWithPaymentId: (NSString*) paymentId;
+- (PendingTransaction*) createTransactionToAddress: (NSString*) dst_addr
+                                     withPaymentId: (NSString*) payment_id
+                                         andAmount: (UInt64) amount
+                                     andMixinCount: (UInt32) mixin_count
+                                       andPriority: (int) priority;
 
 - (bool) refresh;
 - (void) refreshAsync;
+
++ (NSString*) displayAmount: (UInt64) amount;
++ (UInt64) amountFromString: (NSString*) amount;
++ (UInt64) amountFromDouble: (double) amount;
 
 
 @property NSString *paymentId;

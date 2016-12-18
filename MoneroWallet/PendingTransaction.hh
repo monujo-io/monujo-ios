@@ -22,6 +22,8 @@
 @property (readonly) uint64_t fee;
 @property (readonly) uint64_t dust;
 @property (readonly) void *internal;
+@property (readonly) int status;
+
 
 
 @end

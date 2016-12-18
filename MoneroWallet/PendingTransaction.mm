@@ -51,4 +51,13 @@
 - (uint64_t) dust {
     return m_pendingTransaction->dust();
 }
+
+- (uint64_t) status {
+    return m_pendingTransaction->status();
+}
+
+//- (uint64_t) txCount {
+//    return m_pendingTransaction->txCount();
+//}
+
 @end

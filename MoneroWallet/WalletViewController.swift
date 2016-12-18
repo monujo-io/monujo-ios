@@ -21,10 +21,14 @@ class WalletViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetWallet()
-        NotificationCenter.default.addObserver(self, selector: #selector(WalletViewController.resetWallet), name: WalletStore.walletInittedNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(WalletViewController.resetWallet),
+                                               name: WalletStore.walletInittedNotification,
+                                               object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: WalletStore.walletInittedNotification, object: nil);
     }
 

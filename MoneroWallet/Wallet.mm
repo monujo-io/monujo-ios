@@ -281,6 +281,19 @@ CFTimeInterval const DAEMON_BLOCKCHAIN_TARGET_HEIGHT_CACHE_TTL_SECONDS = 60;
     return [NSString stringWithUTF8String:m_walletImpl->integratedAddress(std::string([paymentId UTF8String])).c_str()];
 }
 
++ (NSString*) displayAmount: (UInt64) amount {
+    return [NSString stringWithUTF8String: Bitmonero::Wallet::displayAmount(amount).c_str()];
+}
+
++ (UInt64) amountFromString: (NSString*) amount
+{
+    return Bitmonero::Wallet::amountFromString(std::string([amount UTF8String]));
+}
+
++ (UInt64) amountFromDouble: (double) amount
+{
+    return Bitmonero::Wallet::amountFromDouble(amount);
+}
 
 
 @end

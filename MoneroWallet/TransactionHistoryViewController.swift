@@ -22,6 +22,7 @@ class TransactionHistoryViewController: UITableViewController {
         self.wallet = wallet
         let history = wallet.history!
         transactions = history.getAll() as? Array<TransactionInfo> ?? []
+        self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,13 +34,13 @@ class TransactionHistoryViewController: UITableViewController {
 
         let transaction = transactions[indexPath.row]
 
-        if let direction = cell.viewWithTag(0) as? UILabel {
+        if let direction = cell.viewWithTag(1) as? UILabel {
             direction.text = String(transaction.direction)
         }
-        if let status = cell.viewWithTag(1) as? UILabel {
+        if let status = cell.viewWithTag(2) as? UILabel {
             status.text = transaction.failed ? "Failed" : ( transaction.pending ? "Pending" :"Completed" )
         }
-        if let amount = cell.viewWithTag(2) as? UILabel {
+        if let amount = cell.viewWithTag(3) as? UILabel {
             amount.text = String(transaction.amount)
         }
 

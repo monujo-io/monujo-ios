@@ -43,7 +43,7 @@
 		412568EE1D3A56A90055700F /* skein.c in Sources */ = {isa = PBXBuildFile; fileRef = 412568EA1D3A56A90055700F /* skein.c */; };
 		412568EF1D3A56A90055700F /* hash-extra-skein.c in Sources */ = {isa = PBXBuildFile; fileRef = 412568EC1D3A56A90055700F /* hash-extra-skein.c */; };
 		412E204F1DCE185B00F1BB42 /* TransactionHistory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */; };
-		412E20551DCE2F3400F1BB42 /* PendingTransactionm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */; };
+		412E20551DCE2F3400F1BB42 /* PendingTransaction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E20541DCE2F3400F1BB42 /* PendingTransaction.mm */; };
 		412E20581DCE324000F1BB42 /* TransactionInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E20571DCE324000F1BB42 /* TransactionInfo.mm */; };
 		412E205B1DCE339200F1BB42 /* WalletManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 412E205A1DCE339200F1BB42 /* WalletManager.mm */; };
 		416B673C1D377474001CB934 /* BlockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B673B1D377474001CB934 /* BlockHeader.swift */; };
@@ -56,6 +56,8 @@
 		4182418A1DCF444E00A666C2 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418241891DCF444E00A666C2 /* WalletViewController.swift */; };
 		4182418C1DCF6A9100A666C2 /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */; };
 		4197F3BD1DD9377700B4D03A /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */; };
+		419EC5331E068C4B00E41AA3 /* CreateTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419EC5321E068C4B00E41AA3 /* CreateTransactionViewController.swift */; };
+		419EC5351E068C7500E41AA3 /* ConfirmTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419EC5341E068C7500E41AA3 /* ConfirmTransactionViewController.swift */; };
 		41B0220C1D43329600B5B801 /* Wallet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41B0220B1D43329600B5B801 /* Wallet.mm */; };
 		41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CDF1DC56661007AAE50 /* pending_transaction.cpp */; };
 		41CE5CEB1DC56661007AAE50 /* transaction_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41CE5CE11DC56661007AAE50 /* transaction_history.cpp */; };
@@ -239,7 +241,7 @@
 		412E204D1DCE185B00F1BB42 /* TransactionHistory.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransactionHistory.hh; sourceTree = "<group>"; };
 		412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransactionHistory.mm; sourceTree = "<group>"; };
 		412E20531DCE2F3400F1BB42 /* PendingTransaction.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PendingTransaction.hh; sourceTree = "<group>"; };
-		412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PendingTransactionm.mm; sourceTree = "<group>"; };
+		412E20541DCE2F3400F1BB42 /* PendingTransaction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PendingTransaction.mm; sourceTree = "<group>"; };
 		412E20561DCE324000F1BB42 /* TransactionInfo.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransactionInfo.hh; sourceTree = "<group>"; };
 		412E20571DCE324000F1BB42 /* TransactionInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransactionInfo.mm; sourceTree = "<group>"; };
 		412E20591DCE339200F1BB42 /* WalletManager.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WalletManager.hh; sourceTree = "<group>"; };
@@ -254,6 +256,8 @@
 		418241891DCF444E00A666C2 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		4182418B1DCF6A9000A666C2 /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
+		419EC5321E068C4B00E41AA3 /* CreateTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTransactionViewController.swift; sourceTree = "<group>"; };
+		419EC5341E068C7500E41AA3 /* ConfirmTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmTransactionViewController.swift; sourceTree = "<group>"; };
 		41B021641D430B9500B5B801 /* MoneroWallet-Bridging-Header.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "MoneroWallet-Bridging-Header.hh"; sourceTree = "<group>"; };
 		41B022031D4330A600B5B801 /* core_rpc_server_commands_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_commands_defs.h; sourceTree = "<group>"; };
 		41B022041D4330A600B5B801 /* core_rpc_server_error_codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_rpc_server_error_codes.h; sourceTree = "<group>"; };
@@ -636,7 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				412E20531DCE2F3400F1BB42 /* PendingTransaction.hh */,
-				412E20541DCE2F3400F1BB42 /* PendingTransactionm.mm */,
+				412E20541DCE2F3400F1BB42 /* PendingTransaction.mm */,
 				412E204D1DCE185B00F1BB42 /* TransactionHistory.hh */,
 				412E204E1DCE185B00F1BB42 /* TransactionHistory.mm */,
 				412E20561DCE324000F1BB42 /* TransactionInfo.hh */,
@@ -719,6 +723,8 @@
 				418241891DCF444E00A666C2 /* WalletViewController.swift */,
 				418241831DCF411000A666C2 /* WalletStore.swift */,
 				4197F3BC1DD9377700B4D03A /* TransactionHistoryViewController.swift */,
+				419EC5321E068C4B00E41AA3 /* CreateTransactionViewController.swift */,
+				419EC5341E068C7500E41AA3 /* ConfirmTransactionViewController.swift */,
 			);
 			path = MoneroWallet;
 			sourceTree = "<group>";
@@ -917,11 +923,13 @@
 				418241861DCF41E500A666C2 /* CreateWalletViewController.swift in Sources */,
 				4182418A1DCF444E00A666C2 /* WalletViewController.swift in Sources */,
 				41CE5D041DC567E0007AAE50 /* base58.cpp in Sources */,
+				419EC5351E068C7500E41AA3 /* ConfirmTransactionViewController.swift in Sources */,
 				410EC6511D7C759E008720C5 /* rctSigs.cpp in Sources */,
 				41CE5D081DC567E0007AAE50 /* perf_timer.cpp in Sources */,
 				41CE5CEF1DC56661007AAE50 /* wallet_manager.cpp in Sources */,
 				412565AC1D3A1F2B0055700F /* i18n.cpp in Sources */,
 				412568E41D3A55F40055700F /* blake256.c in Sources */,
+				419EC5331E068C4B00E41AA3 /* CreateTransactionViewController.swift in Sources */,
 				41CE5CED1DC56661007AAE50 /* utils.cpp in Sources */,
 				416B673C1D377474001CB934 /* BlockHeader.swift in Sources */,
 				410EC6521D7C759E008720C5 /* rctTypes.cpp in Sources */,
@@ -941,7 +949,7 @@
 				41CE5CEA1DC56661007AAE50 /* pending_transaction.cpp in Sources */,
 				412568CF1D3A33610055700F /* slow-hash.c in Sources */,
 				41FE12B51E02130500289DF4 /* NewWalletViewController.swift in Sources */,
-				412E20551DCE2F3400F1BB42 /* PendingTransactionm.mm in Sources */,
+				412E20551DCE2F3400F1BB42 /* PendingTransaction.mm in Sources */,
 				412568DB1D3A55920055700F /* aesb.c in Sources */,
 				41B0220C1D43329600B5B801 /* Wallet.mm in Sources */,
 				412565AE1D3A1F2B0055700F /* util.cpp in Sources */,
