@@ -90,7 +90,7 @@ class WalletStore {
     static func savedWalletExists() -> Bool {
         let fileManager = FileManager.default
         let defaults = UserDefaults.standard
-        guard let walletFile = defaults.string(forKey: "walletFile"),
+        guard let walletFile = defaults.string(forKey: walletFileKey),
             let walletPath = WalletStore.walletFile(filename: walletFile),
             fileManager.fileExists(atPath: walletPath) else {
             return false
