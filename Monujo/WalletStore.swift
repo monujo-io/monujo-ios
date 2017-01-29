@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainAccess
 
 class WalletStore {
 
@@ -20,6 +21,8 @@ class WalletStore {
     static let isRecoveringKey = "isRecovering"
     static let restoreHeightKey = "restoreHeight"
 
+    static let keychain = Keychain(service: "io.monujo.app")
+    
     static func walletFile(filename: String = defaultFilename) -> String? {
 
         if let dir = NSSearchPathForDirectoriesInDomains(
@@ -49,6 +52,8 @@ class WalletStore {
             return nil
         }
 
+        keychain["password"] = password
+        
         initWallet(wallet, walletFile: walletFile)
         return wallet
     }
@@ -63,6 +68,8 @@ class WalletStore {
                                                inTestNet: WalletStore.testNet) else {
             return nil
         }
+
+        keychain["password"] = password
 
         initWallet(wallet,
                    walletFile: walletFile,
@@ -98,11 +105,20 @@ class WalletStore {
         return true
     }
 
-    static func openSavedWallet(password: String = "") -> Wallet? {
+    static func openSavedWallet() -> Wallet? {
         let defaults = UserDefaults.standard
         guard let walletFile = defaults.string(forKey: walletFileKey) else {
             return nil
         }
+
+        guard savedWalletExists() else {
+            return nil
+        }        
+        
+        guard let password = keychain["password"] else {
+            return nil
+        }
+        
         let isRecovering = defaults.bool(forKey: isRecoveringKey)
         let restoreHeight = defaults.object(forKey: restoreHeightKey) as? NSNumber
 

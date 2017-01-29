@@ -13,10 +13,8 @@ class MainViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if WalletStore.savedWalletExists() {
-            _ = WalletStore.openSavedWallet()
-        } else {
-            performSegue(withIdentifier: "LoginSegue", sender: self)
+        guard let _ = WalletStore.openSavedWallet() else {
+            return performSegue(withIdentifier: "LoginSegue", sender: self)
         }
     }
 }

@@ -30,6 +30,7 @@
 		41BE1A461E092705008FB075 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413406FD1E0917FA00A91723 /* LaunchScreen.storyboard */; };
 		41BE1A471E09270C008FB075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413406F81E0917FA00A91723 /* Main.storyboard */; };
 		41E178671E3B163700E1C9CF /* libboost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E178661E3B163700E1C9CF /* libboost.a */; };
+		DE6B0520FAC0914427920D02 /* Pods_Monujo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC0BB601FB6D3A63CE64CFB /* Pods_Monujo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,9 @@
 		413407421E091DB600A91723 /* WalletStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStore.swift; sourceTree = "<group>"; };
 		413407431E091DB600A91723 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		41E178661E3B163700E1C9CF /* libboost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost.a; path = monero/libboost.a; sourceTree = "<group>"; };
+		8BC0BB601FB6D3A63CE64CFB /* Pods_Monujo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monujo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7F06D520530AF6DCD592D0A /* Pods-Monujo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monujo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monujo/Pods-Monujo.release.xcconfig"; sourceTree = "<group>"; };
+		FD7712F978B84401566EB2CE /* Pods-Monujo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monujo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monujo/Pods-Monujo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			files = (
 				413407351E091C8300A91723 /* libwallet.a in Frameworks */,
 				41E178671E3B163700E1C9CF /* libboost.a in Frameworks */,
+				DE6B0520FAC0914427920D02 /* Pods_Monujo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +128,7 @@
 				413407131E0917FA00A91723 /* MonujoUITests */,
 				413406F21E0917FA00A91723 /* Products */,
 				413407331E091C8300A91723 /* Frameworks */,
+				73FB19C07AA5D302464C3950 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,8 +208,18 @@
 			children = (
 				413407341E091C8300A91723 /* libwallet.a */,
 				41E178661E3B163700E1C9CF /* libboost.a */,
+				8BC0BB601FB6D3A63CE64CFB /* Pods_Monujo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		73FB19C07AA5D302464C3950 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD7712F978B84401566EB2CE /* Pods-Monujo.debug.xcconfig */,
+				C7F06D520530AF6DCD592D0A /* Pods-Monujo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,9 +229,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 413407191E0917FA00A91723 /* Build configuration list for PBXNativeTarget "Monujo" */;
 			buildPhases = (
+				7534874EC34F7B32CA5F8E2A /* [CP] Check Pods Manifest.lock */,
 				413406ED1E0917FA00A91723 /* Sources */,
 				413406EE1E0917FA00A91723 /* Frameworks */,
 				413406EF1E0917FA00A91723 /* Resources */,
+				D3B008684801F4AFD3E58BC7 /* [CP] Embed Pods Frameworks */,
+				F284DA97D762502911AC0F68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,6 +357,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7534874EC34F7B32CA5F8E2A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3B008684801F4AFD3E58BC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monujo/Pods-Monujo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F284DA97D762502911AC0F68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monujo/Pods-Monujo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		413406ED1E0917FA00A91723 /* Sources */ = {
@@ -509,7 +576,9 @@
 		};
 		4134071A1E0917FA00A91723 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD7712F978B84401566EB2CE /* Pods-Monujo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2KBMT7227J;
@@ -531,7 +600,9 @@
 		};
 		4134071B1E0917FA00A91723 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7F06D520530AF6DCD592D0A /* Pods-Monujo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2KBMT7227J;
