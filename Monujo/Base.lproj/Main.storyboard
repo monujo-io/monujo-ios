@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aus-e2-CxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aus-e2-CxB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgK-de-4Sl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2526" y="-916"/>
+            <point key="canvasLocation" x="-2454" y="-1206"/>
         </scene>
         <!--New Wallet View Controller-->
         <scene sceneID="6VC-3y-xrT">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWz-eU-vYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1564" y="-916"/>
+            <point key="canvasLocation" x="-1575" y="-1207"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="JoD-80-aO6">
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQV-tG-mjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46" y="-1890"/>
+            <point key="canvasLocation" x="-242" y="-2135"/>
         </scene>
         <!--Open Wallet View Controller-->
         <scene sceneID="Xew-1V-CFw">
@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpA-mP-B1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-47" y="-1112"/>
+            <point key="canvasLocation" x="-242" y="-1470"/>
         </scene>
         <!--Create Transaction View Controller-->
         <scene sceneID="FRU-sI-a9D">
@@ -494,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64v-rs-j7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="-352.17391304347831"/>
+            <point key="canvasLocation" x="-242" y="-804"/>
         </scene>
         <!--Item-->
         <scene sceneID="M13-7m-8hr">
@@ -597,7 +597,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGe-A1-xYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2649" y="1161"/>
+            <point key="canvasLocation" x="-4026" y="1073"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="JOQ-0Q-IuH">
@@ -638,7 +638,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4m-XS-0fd" id="5xp-uK-68p">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmZ-RE-DI7">
@@ -669,6 +669,9 @@
                                         <constraint firstItem="jmZ-RE-DI7" firstAttribute="centerY" secondItem="5xp-uK-68p" secondAttribute="centerY" id="sml-8P-YBG"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UCC-ah-mba" kind="show" id="wfJ-W5-XKf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -680,7 +683,43 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkE-nT-Jcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4143" y="1161"/>
+            <point key="canvasLocation" x="-2676" y="1073"/>
+        </scene>
+        <!--Transaction Detail View Controller-->
+        <scene sceneID="gjL-Mv-KwK">
+            <objects>
+                <viewController id="UCC-ah-mba" customClass="TransactionDetailViewController" customModule="Monujo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6w5-qA-FdI"/>
+                        <viewControllerLayoutGuide type="bottom" id="qDa-KI-sHR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OkZ-u2-ik7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ItV-Oq-WaN">
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ItV-Oq-WaN" firstAttribute="top" secondItem="6w5-qA-FdI" secondAttribute="bottom" id="8hO-T1-Dwd"/>
+                            <constraint firstItem="qDa-KI-sHR" firstAttribute="top" secondItem="ItV-Oq-WaN" secondAttribute="bottom" id="O5J-6U-0k0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ItV-Oq-WaN" secondAttribute="trailing" id="WKI-jV-1pV"/>
+                            <constraint firstItem="ItV-Oq-WaN" firstAttribute="leading" secondItem="OkZ-u2-ik7" secondAttribute="leadingMargin" id="v1o-WF-UMw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="transactionDetailTV" destination="ItV-Oq-WaN" id="zee-M6-5uX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pnd-mT-V5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1422" y="1073"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0t9-qt-h5K">

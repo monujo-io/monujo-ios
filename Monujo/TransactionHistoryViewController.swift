@@ -47,4 +47,13 @@ class TransactionHistoryViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TransactionDetailViewController,
+            let transactionIndex = tableView.indexPathForSelectedRow?.row
+        {
+            destination.transaction = transactions[transactionIndex]
+        }
+    }
+
 }

@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+
+@interface Transfer : NSObject
+
+- (instancetype)initWithAmount: (uint64_t) amount
+                    andAddress: (NSString *) address;
+
+@property (readonly) uint64_t amount;
+@property (readonly) NSString *address;
+
+@end
+
 @interface TransactionInfo : NSObject
 
 - (instancetype)init: (void *) internal;
@@ -20,9 +31,10 @@
 @property (readonly) uint64_t amount;
 @property (readonly) uint64_t fee;
 @property (readonly) uint64_t blockHeight;
-//@property (readonly) NSString *hash;
+@property (readonly) NSString *hash;
 @property (readonly) NSDate *timestamp;
 @property (readonly) NSString *paymentId;
+//@property (readonly) uint64_t confirmations;
 @property (readonly) NSArray *transfers;
 
 @end

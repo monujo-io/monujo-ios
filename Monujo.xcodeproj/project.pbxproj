@@ -27,6 +27,7 @@
 		4134074D1E091DB600A91723 /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413407401E091DB600A91723 /* TransactionHistoryViewController.swift */; };
 		4134074F1E091DB600A91723 /* WalletStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413407421E091DB600A91723 /* WalletStore.swift */; };
 		413407501E091DB600A91723 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413407431E091DB600A91723 /* WalletViewController.swift */; };
+		41B220661E3DEA4F0000DE69 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B220651E3DEA4F0000DE69 /* TransactionDetailViewController.swift */; };
 		41BE1A461E092705008FB075 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413406FD1E0917FA00A91723 /* LaunchScreen.storyboard */; };
 		41BE1A471E09270C008FB075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413406F81E0917FA00A91723 /* Main.storyboard */; };
 		41E178671E3B163700E1C9CF /* libboost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E178661E3B163700E1C9CF /* libboost.a */; };
@@ -86,6 +87,7 @@
 		413407401E091DB600A91723 /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
 		413407421E091DB600A91723 /* WalletStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStore.swift; sourceTree = "<group>"; };
 		413407431E091DB600A91723 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		41B220651E3DEA4F0000DE69 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		41E178661E3B163700E1C9CF /* libboost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost.a; path = monero/libboost.a; sourceTree = "<group>"; };
 		8BC0BB601FB6D3A63CE64CFB /* Pods_Monujo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monujo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F06D520530AF6DCD592D0A /* Pods-Monujo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monujo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monujo/Pods-Monujo.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				4134073E1E091DB600A91723 /* OpenWalletViewController.swift */,
 				4134073F1E091DB600A91723 /* RecoverWalletViewController.swift */,
 				413407401E091DB600A91723 /* TransactionHistoryViewController.swift */,
+				41B220651E3DEA4F0000DE69 /* TransactionDetailViewController.swift */,
 				413407421E091DB600A91723 /* WalletStore.swift */,
 				413407431E091DB600A91723 /* WalletViewController.swift */,
 				413407001E0917FA00A91723 /* Info.plist */,
@@ -425,6 +428,7 @@
 				413407451E091DB600A91723 /* ConfirmTransactionViewController.swift in Sources */,
 				4134074C1E091DB600A91723 /* RecoverWalletViewController.swift in Sources */,
 				413407321E091B6B00A91723 /* WalletManager.mm in Sources */,
+				41B220661E3DEA4F0000DE69 /* TransactionDetailViewController.swift in Sources */,
 				413407461E091DB600A91723 /* CreateTransactionViewController.swift in Sources */,
 				413406F51E0917FA00A91723 /* AppDelegate.swift in Sources */,
 			);
